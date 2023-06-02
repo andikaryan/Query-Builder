@@ -4,7 +4,7 @@
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Edit Data obat</title>
+    <title>Detail Data obat</title>
     <link rel="stylesheet" href="{{ asset('assets/css/EditPasienObat.css')}}">
     <link href="//netdna.bootstrapcdn.com/font-awesome/4.0.3/css/font-awesome.css" rel="stylesheet"/>
 </head>
@@ -20,7 +20,7 @@
 
     <div class="box">
         <div class="sub">
-            <p>Edit Data Obat</p>
+            <p>Detail Data Obat</p>
         </div>
 
 
@@ -30,17 +30,13 @@
 
             <div class="form">
                 <label for="">Nama Obat</label><br>
-                <input type="text" name="nama" class="form-control" placeholder="Nama Obat..." value="{{$obats->nama}}">
+                <input readonly type="text" name="nama" class="form-control" placeholder="Nama Obat..." value="{{$obats->nama}}">
 
                 <label for="">kegunaan</label><br>
-                <input type="text" name="kegunaan" class="form-control" placeholder="Kegunaan..." value="{{$obats->kegunaan}}">
+                <input readonly type="text" name="kegunaan" class="form-control" placeholder="Kegunaan..." value="{{$obats->kegunaan}}">
 
                 <label for="">Harga</label><br>
-                <input type="text" name="harga" class="form-control" placeholder="Harga..." value="{{$obats->harga}}">
-
-                <div class="submit">
-                    <input type="submit" value="Simpan">
-                </div>
+                <input readonly type="text" name="harga" class="form-control" placeholder="Harga..." value="{{$obats->harga}}">
 
             </div>
           </form>

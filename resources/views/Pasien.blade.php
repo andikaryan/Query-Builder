@@ -4,6 +4,11 @@
 @section('main-content')
 <!-- SideBar -->
 <div class="container-fluid">
+@if ($message = Session::get('success'))
+      <div class="alert alert-success alert-block">
+          <strong>{{ $message }}</strong>
+      </div>
+    @endif
       <div class="row flex-nowrap" style="width:85%;">
         <div style="background-color: #DDD;" class="col-auto col-md-4 col-lg-2 min-vh-100 d-flex flex-column justify content">
           <div style="background-color: #DDD;" class="">
@@ -55,11 +60,8 @@
                             <td>{{ $item->ruangan}}</td>
                             <td>{{ $item->penyakit}}</td>
                             <td>
-                                <a class="tEdit btn btn-primary btn-sm" href="{{ url('/edit-pasien/'.$item->id)}}" >Edit</a>
-                                <button class="btn btn-danger btn-sm" onclick="dialog_hapus()">Hapus</button>
-                                <form id='form_hapus' action="{{ url('/hapus-pasien/'.$item->id)}}" method="GET">
-                                  <input id='id' type="hidden" name='id' value="">
-                                </form>
+                                <a class="btn btn-primary btn-sm" href="{{ url('/edit-pasien/'.$item->id)}}" >Edit</a>
+                                <a class="btn btn-danger btn-sm" href="{{ url('/hapus-pasien/'.$item->id)}}" onclick="return confirm('anda yakin ingin menghapus?')">Hapus</a>
                         
                             </td>
 
@@ -71,21 +73,6 @@
         </div>
     </div>
   </div>
-
-
-  <script type="text/javascript">
-  function dialog_hapus(pasien_id){
-    var tanya = confirm('Apakah anda yakin menghapus pasien ini?');
-
-    if(tanya==true){
-      var form = document.querySelector('#form_hapus');
-      var input_id = document.querySelector('#form_hapus #id');
-      input_id.value = pasien_id;
-
-      form.submit();
-    }
-  }
-</script>
 
 </body>
 </html>

@@ -27,7 +27,7 @@ Route::get('/edit-pasien/{pasien_id}', [App\Http\Controllers\PasienController::c
 // Rute dibawah untuk memperbarui data pasien
 Route::put('/update-pasien/{pasien_id}', [App\Http\Controllers\PasienController::class, 'update']);
 // Rute dibawah untuk menghapus data yang diakses
-Route::get('/hapus-pasien/{pasien_id}', [App\Http\Controllers\PasienController::class, 'destroy']);
+Route::get('/hapus-pasien/{id}', [App\Http\Controllers\PasienController::class, 'destroy']);
 
 // Rute dibawah untuk akses data pasien dari database dan ditampilkan ke web
 Route::get('/obat', [App\Http\Controllers\ObatController::class, 'index']);
@@ -40,4 +40,5 @@ Route::get('/edit-obat/{obat_id}', [App\Http\Controllers\ObatController::class, 
 // Rute dibawah untuk memperbarui data pasien
 Route::put('/update-obat/{obat_id}', [App\Http\Controllers\ObatController::class, 'update']);
 // Rute dibawah untuk menghapus data yang diakses
-Route::get('/hapus-obat/{obat_id}', [App\Http\Controllers\ObatController::class, 'destroy']);
+Route::get('/hapus-obat/{id}', [App\Http\Controllers\ObatController::class, 'destroy']);
+Route::get('/detail-obat/{id}', [App\Http\Controllers\ObatController::class, 'detail']);

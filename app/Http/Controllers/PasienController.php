@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use App\Http\Controllers\Controller;
 use App\Http\Requests\PasienRequest;
+use App\Models\Pasien;
 use Illuminate\Support\Facades\DB;
 
 class PasienController extends Controller
@@ -13,7 +14,7 @@ class PasienController extends Controller
      */
     public function index()
     {
-        $pasien =  DB::select('select * from pasiens');
+        $pasien =  DB::table('pasiens')->get();
         return view('Pasien', [
             'pasien'=>$pasien
         ]) ;
@@ -37,8 +38,11 @@ class PasienController extends Controller
         $ruangan = $request -> input('ruangan');
         $penyakit = $request -> input('penyakit');
 
-        $sql = "insert into pasiens (nama,ruangan,penyakit) values (?,?,?)";
-        DB::insert($sql,[$nama, $ruangan, $penyakit]);
+        DB::table('pasiens') -> insert([
+            'nama' => $nama,
+            'ruangan' => $ruangan,
+            'penyakit' => $penyakit
+        ]);
 
         return redirect('/pasien');
 
@@ -49,13 +53,15 @@ class PasienController extends Controller
      */
     public function edit($id)
     {
-        $items = DB::select('select * from pasiens where id=?', [$id]);
+        $pasien = pasien::find($id);
+        return view('editPasien')->with('pasiens', $pasien);
+        // $items = DB::select('select * from pasiens where id=?', [$id]);
 
 
-        if(count($items) <= 0){
+        if(count($pasien) <= 0){
             return "Data tidak ditemukan";
         }
-        $item = $items[0];
+        $item = $pasien[0];
 
         return view('EditPasien', [
             'pasiens' => $item
@@ -70,11 +76,16 @@ class PasienController extends Controller
         $nama = $request -> input('nama');
         $ruangan = $request -> input('ruangan');
         $penyakit = $request -> input('penyakit');
-
-        $sql = "update pasiens set nama=?, ruangan=?, penyakit=? where id=?";
-        DB::update($sql,[$nama, $ruangan, $penyakit,$id]);
-
-        return redirect('/pasien');
+        DB::table('pasiens')
+            -> where([
+                'id' => $id
+            ])
+            -> update([
+                'nama' => $nama,
+                'ruangan' => $ruangan,
+                'penyakit' => $penyakit
+            ]);
+        return redirect('/pasien')->with('success', 'Data Pasien Berhasil Diperbarui!'); 
     }
 
     /**
@@ -82,9 +93,13 @@ class PasienController extends Controller
      */
     public function destroy($id)
     {
-        DB::delete('delete from pasiens where id=?',[$id]);
-        return redirect('/pasien');
+        $data = Pasien::find($id);
+        if (!$data) {
+            return response()->json(['message' => 'Data not found'], 404);
+        }
+
+        // Hapus data
+        $data->delete();
+        return redirect('/pasien')->with('success', 'Data Obat Berhasil Dihapus!');
     }
-
-
 }

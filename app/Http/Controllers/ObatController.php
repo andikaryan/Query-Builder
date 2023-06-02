@@ -3,7 +3,10 @@
 namespace App\Http\Controllers;
 
 use App\Http\Requests\ObatRequest;
+use Illuminate\Http\Request;
 use Illuminate\Support\Facades\DB;
+use App\Models\Obat;
+
 
 class ObatController extends Controller
 {
@@ -12,8 +15,8 @@ class ObatController extends Controller
      */
     public function index()
     {
-        $obat = DB::select('select * from obats');
-        return view('Obat', [
+        $obat =  DB::table('obats')->get();
+        return view('obat', [
             'obat'=>$obat
         ]) ;
     }
@@ -27,34 +30,40 @@ class ObatController extends Controller
     }
 
     /**
-     * Untuk mengirim data obat baru ke database
+     * Untuk mengirim data  obat baru ke database
      */
     public function simpan(ObatRequest $request)
     {
+
         $nama = $request -> input('nama');
         $kegunaan = $request -> input('kegunaan');
         $harga = $request -> input('harga');
 
-        $sql = "insert into obats (nama,kegunaan,harga) values (?,?,?)";
-        DB::insert($sql,[$nama, $kegunaan, $harga]);
+        DB::table('obats') -> insert([
+            'nama' => $nama,
+            'kegunaan' => $kegunaan,
+            'harga' => $harga
+        ]);
 
-        return redirect('/obat');
+        return redirect('/obat')->with('success', 'Data Obat Berhasil Ditambahkan!');
+
     }
-
 
     /**
      * Untuk menampilkan halaman edit obat yang sesuai id yang dipilih
      */
     public function edit($id)
     {
-        $items = DB::select('select * from obats where id=?', [$id]);
+        $obat = obat::find($id);
+        return view('editObat')->with('obats', $obat);
 
-        if(count($items) <= 0){
+
+        if(count($obat) <= 0){
             return "Data tidak ditemukan";
         }
-        $item = $items[0];
+        $item = $obat[0];
 
-        return view('EditObat', [
+        return view('Editobat', [
             'obats' => $item
         ]);
     }
@@ -62,25 +71,44 @@ class ObatController extends Controller
     /**
      * Untuk memperbarui data yang ada di database dan akan ditampilkan di halaman web
      */
-    public function update(ObatRequest $request, $id)
+    public function update(obatRequest $request, $id)
     {
         $nama = $request -> input('nama');
         $kegunaan = $request -> input('kegunaan');
         $harga = $request -> input('harga');
-
-        $sql = "update obats set nama=?, kegunaan=?, harga=? where id=?";
-        DB::update($sql,[$nama, $kegunaan, $harga,$id]);
-
-        return redirect('/obat');
+        DB::table('obats')
+            -> where([
+                'id' => $id
+            ])
+            -> update([
+                'nama' => $nama,
+                'kegunaan' => $kegunaan,
+                'harga' => $harga
+            ]);
+        return redirect('/obat')->with('success', 'Data Obat Berhasil Diperbarui!'); 
     }
-
 
     /**
      * Untuk menghapus data yang dipilih dari database maupun di web
      */
     public function destroy($id)
     {
-        DB::delete('delete from obats where id=?',[$id]);
-        return redirect('/obat');
+        // DB::table('obats')->where(['id'=> $id]) -> delete();
+        // return redirect('/obat')->with('success', 'Data Obat Berhasil Dihapus!');
+            // Temukan data berdasarkan ID
+        $data = Obat::find($id);
+        if (!$data) {
+            return response()->json(['message' => 'Data not found'], 404);
+        }
+
+        // Hapus data
+        $data->delete();
+        return redirect('/obat')->with('success', 'Data Obat Berhasil Dihapus!');
+
+    }
+    public function detail($id)
+    {
+        $obat = obat::find($id);
+        return view('detailObat')->with('obats', $obat);
     }
 }
