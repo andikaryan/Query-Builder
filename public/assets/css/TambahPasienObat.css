@@ -1,0 +1,226 @@
+body{
+    margin: 0px;
+}
+header{
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 0px 150px;
+    background-color: #0077B6;
+}
+
+.logo{
+    height: 24px;
+}
+
+li, a{
+    font-family: "Montserrat", sans-serif;
+    font-weight: normal;
+    font-size: 14px;
+    color: #F6F6F6;
+    text-decoration: none;
+}
+
+nav ul{
+    list-style: none;
+    text-align: center;
+}
+nav ul li{
+    display: inline-block;
+}
+
+nav ul li a{
+    position: relative;
+    z-index: 1;
+    display: block;
+    padding: 5px 10px;
+    text-decoration: none;
+
+}
+
+nav ul li a:hover{
+    color: #FFCB74;
+    font-weight: bold;
+}
+
+.nav2{
+    list-style: none;
+}
+.nav2 ul{
+    margin: 0px;
+
+}
+.nav2 li{
+    padding: 0px 4px;
+}
+.fa:hover{
+    color: #FFCB74;
+}
+
+.dropbtn {
+    background-color: transparent;
+    color: white;
+    padding: 12px;
+    font-size: 16px;
+    border: none;
+  }
+
+  .dropdown {
+    position: relative;
+    display: inline-block;
+  }
+
+  .dropdown-content {
+    display: none;
+    position: absolute;
+    background-color: #f6f6f6;
+    min-width: 100px;
+    box-shadow: 0px 8px 16px 0px rgba(0,0,0,0.2);
+  }
+
+  .dropdown-content a {
+    color: black;
+    padding: 12px 12px;
+    text-decoration: none;
+    display: block;
+  }
+
+  .dropdown-content a:hover {background-color: #0077B6;}
+
+  .dropdown:hover .dropdown-content {display: block;}
+
+  .kembali{
+    display: flex;
+    margin: 30px 80px 0px 80px;
+}
+
+.tombol:hover{
+    background-color: #FFCB74;
+}
+
+.tombol{
+	padding: 7px 14px;
+	border: none;
+	border-radius: 8px;
+	background-color: #e7e7e7;
+    color: #000000;
+    font-family: "Montserrat", sans-serif;
+    font-weight: normal;
+    font-size: 10px;
+    text-align: center;
+    cursor: pointer;
+    font-weight: bold;
+}
+
+.fa-chevron-left:hover{
+    color: #000000;
+}
+
+.tTombol{
+    font-size: 12px;
+    padding-left: 4px;
+}
+
+.box{
+    background-color: #0077B6;
+    width: 700px;
+    margin: 30px auto;
+    margin-bottom: 80px;
+    font-family: "Montserrat", sans-serif;
+    font-size: 14px;
+    color: black;
+    border-radius: 10px;
+}
+
+.sub{
+    text-align: center;
+    padding-top: 20px;
+    margin: 0 60px;
+    color: #F6F6F6;
+    font-size: 16px;
+    font-weight: 600;
+    border-bottom: 1px solid gainsboro;
+}
+
+.form{
+    margin: 15px 60px;
+}
+.form label{
+    color: #F6F6F6;
+    font-size: 12px;
+}
+
+input[type=text], select {
+    width: 100%;
+    padding: 12px 20px;
+    margin: 8px 0;
+    display: inline-block;
+    border: 1px solid #F6F6F6;
+    border-radius: 4px;
+    box-sizing: border-box;
+    font-family: "Montserrat", sans-serif;
+}
+
+#desk{
+    resize: none;
+    width: 100%;
+    padding: 12px 20px;
+    margin: 8px 0;
+    border: 1px solid #F6F6F6;
+    border-radius: 4px;
+    box-sizing: border-box;
+}
+
+input[type=password], select {
+    width: 100%;
+    padding: 12px 20px;
+    margin: 8px 0;
+    display: inline-block;
+    border: 1px solid #F6F6F6;
+    border-radius: 4px;
+    box-sizing: border-box;
+}
+
+.gambar{
+    background-color: #f6f6f6;
+    padding: 10px 12px;
+    border-radius: 6px;
+    color: #000;
+    font-size: 12px;
+}
+
+.gambar:hover{
+    background-color: #FFCB74;
+}
+
+#fa1{
+    padding: 0px 5px;
+}
+#fa1:hover{
+    color: #000;
+}
+
+.image_upload > input{display:none;}
+
+
+.submit{
+    display: flex;
+    justify-content: center;
+}
+
+input[type=submit] {
+    background-color: #c2c2c2;
+    color: #000000;
+    width: 100px;
+    padding: 10px 20px;
+    margin: 30px 0 50px 0;
+    border: none;
+    border-radius: 4px;
+    cursor: pointer;
+    font-weight: bold;
+  }
+
+input[type=submit]:hover{
+    background-color: #FFCB74;
+    color: rgb(0, 0, 0);
+}
