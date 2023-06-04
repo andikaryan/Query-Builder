@@ -44,7 +44,7 @@ class PasienController extends Controller
             'penyakit' => $penyakit
         ]);
 
-        return redirect('/pasien');
+        return redirect('/pasien')->with('success','Data Pasien '.$nama. ' Berhasil Ditambahkan!');
 
     }
 
@@ -85,7 +85,7 @@ class PasienController extends Controller
                 'ruangan' => $ruangan,
                 'penyakit' => $penyakit
             ]);
-        return redirect('/pasien')->with('success', 'Data Pasien Berhasil Diperbarui!'); 
+        return redirect('/pasien')->with('success','Data Pasien '.$nama. ' Berhasil Diperbarui!');
     }
 
     /**
@@ -94,12 +94,15 @@ class PasienController extends Controller
     public function destroy($id)
     {
         $data = Pasien::find($id);
-        if (!$data) {
-            return response()->json(['message' => 'Data not found'], 404);
-        }
 
         // Hapus data
         $data->delete();
-        return redirect('/pasien')->with('success', 'Data Obat Berhasil Dihapus!');
+        return redirect('/pasien')->with('success','Data Pasien '.$data['nama']. ' Berhasil Dihapus!');
+    }
+
+    public function detail($id)
+    {
+        $pasien = Pasien::find($id);
+        return view('detailPasien')->with('pasiens', $pasien);
     }
 }

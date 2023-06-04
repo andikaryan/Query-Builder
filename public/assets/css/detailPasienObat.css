@@ -1,0 +1,86 @@
+body{
+    margin: 0px;
+}
+
+.kembali{
+    display: flex;
+    margin: 30px 80px 30px 80px;
+}
+
+.tombol:hover{
+    background-color: #FFCB74;
+}
+
+.tombol{
+	padding: 7px 14px;
+	border: none;
+	border-radius: 8px;
+	background-color: #e7e7e7;
+    color: #000000;
+    font-family: "Montserrat", sans-serif;
+    font-weight: normal;
+    font-size: 10px;
+    text-align: center;
+    cursor: pointer;
+    font-weight: bold;
+}
+
+.fa-chevron-left:hover{
+    color: #000000;
+}
+
+.tTombol{
+    font-size: 12px;
+    padding-left: 4px;
+}
+
+.badan2
+{
+    font-family: "Montserrat", sans-serif;
+    font-weight: normal;
+    width: 700px;
+    margin: 0px auto;
+    margin-bottom: 50px;
+    background-color: #f6f6f6;
+    overflow: hidden;
+    border: 1px solid gainsboro;
+    border-radius: 10px;
+}
+
+.judul2{
+    font-weight: bold;
+    font-size: 18px;
+    background-color: #0077B6;
+    text-align: center;
+    padding: 15px;
+    color: white;
+}
+
+.deskObat{
+    padding-bottom: 30px;
+}
+
+table{
+    border-collapse: collapse;
+    border-radius: 10px;
+    text-align: center;
+    background-color: #f6f6f6;
+    color:#000000;
+    margin-top: 25px;
+}
+
+.tabel td{
+    width: 10%;
+    padding: 15px;
+    font-size: 14px;
+}
+
+.tabel th{
+    width: 10%;
+    padding: 15px;
+    font-size: 14px;
+}
+
+
+
+

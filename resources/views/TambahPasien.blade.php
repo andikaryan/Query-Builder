@@ -8,6 +8,10 @@
     <link rel="stylesheet" href="{{ asset('assets/css/TambahPasienObat.css')}}">
     <link href="//netdna.bootstrapcdn.com/font-awesome/4.0.3/css/font-awesome.css" rel="stylesheet"/>
 </head>
+<!-- Extend ini digunakan untuk memanggil data dari template -->
+@extends('template/template')
+<!-- Section ini adalah halaman yang akan ditampilkan ke web -->
+@section('main-content')
 <body>
 
     <div class="kembali">
@@ -46,3 +50,4 @@
     </div>
 </body>
 </html>
+@endsection

@@ -1,93 +1,6 @@
 body{
     margin: 0px;
 }
-header{
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
-    padding: 0px 150px;
-    background-color: #0077B6;
-}
-
-.logo{
-    height: 24px;
-}
-
-li, a{
-    font-family: "Montserrat", sans-serif;
-    font-weight: normal;
-    font-size: 14px;
-    color: #F6F6F6;
-    text-decoration: none;
-}
-
-nav ul{
-    list-style: none;
-    text-align: center;
-}
-nav ul li{
-    display: inline-block;
-}
-
-nav ul li a{
-    position: relative;
-    z-index: 1;
-    display: block;
-    padding: 5px 10px;
-    text-decoration: none;
-
-}
-
-nav ul li a:hover{
-    color: #FFCB74;
-    font-weight: bold;
-}
-
-.nav2{
-    list-style: none;
-}
-.nav2 ul{
-    margin: 0px;
-
-}
-.nav2 li{
-    padding: 0px 4px;
-}
-.fa:hover{
-    color: #FFCB74;
-}
-
-.dropbtn {
-    background-color: transparent;
-    color: white;
-    padding: 12px;
-    font-size: 16px;
-    border: none;
-  }
-
-  .dropdown {
-    position: relative;
-    display: inline-block;
-  }
-
-  .dropdown-content {
-    display: none;
-    position: absolute;
-    background-color: #f6f6f6;
-    min-width: 100px;
-    box-shadow: 0px 8px 16px 0px rgba(0,0,0,0.2);
-  }
-
-  .dropdown-content a {
-    color: black;
-    padding: 12px 12px;
-    text-decoration: none;
-    display: block;
-  }
-
-  .dropdown-content a:hover {background-color: #0077B6;}
-
-  .dropdown:hover .dropdown-content {display: block;}
 
 .badan
 {
@@ -140,19 +53,19 @@ table {
     text-align: center;
   }
 
-  th, td {
+.tTabel th, td {
     padding: 15px;
     text-align: left;
     border-bottom: 1px solid #DDD;
     text-align: center;
   }
 
-  th{
+.tTabel th{
     color: #F6F6F6;
     background-color: #0077B6;
   }
 
-  tr:hover {
+.tTabel tr:hover {
     background-color: #FFCB74;}
 
 .tEdit{
@@ -160,12 +73,13 @@ table {
     color: #F6F6F6;
     border: none;
     border-radius: 8px;
-    padding: 4px 8px;
+    padding: 8px 10px;
     cursor: pointer;
     text-decoration: none;
+    font-weight: bold;
 }
 
-.tEdit:hover, .tHapus:hover {
+.tEdit:hover, .tHapus:hover, .tDetail:hover {
     color: #F6F6F6;
 }
 
@@ -175,8 +89,20 @@ table {
     color: #F6F6F6;
     border: none;
     border-radius: 8px;
-    padding: 4px 8px;
+    padding: 8px 10px;
     cursor: pointer;
     text-decoration: none;
+    font-weight: bold;
+}
+
+.tDetail{
+    background-color: rgb(1, 189, 1);
+    color: #F6F6F6;
+    border: none;
+    border-radius: 8px;
+    padding: 8px 10px;
+    cursor: pointer;
+    text-decoration: none;
+    font-weight: bold;
 }
 

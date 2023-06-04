@@ -45,7 +45,7 @@ class ObatController extends Controller
             'harga' => $harga
         ]);
 
-        return redirect('/obat')->with('success', 'Data Obat Berhasil Ditambahkan!');
+        return redirect('/obat')->with('success','Data Obat '.$nama. ' Berhasil Ditambahkan!');
 
     }
 
@@ -85,25 +85,19 @@ class ObatController extends Controller
                 'kegunaan' => $kegunaan,
                 'harga' => $harga
             ]);
-        return redirect('/obat')->with('success', 'Data Obat Berhasil Diperbarui!'); 
+        return redirect('/obat')->with('success','Data Obat '.$nama. ' Berhasil Diperbarui!');
     }
 
     /**
      * Untuk menghapus data yang dipilih dari database maupun di web
      */
-    public function destroy($id)
+    public function destroy(Request $request,$id)
     {
-        // DB::table('obats')->where(['id'=> $id]) -> delete();
-        // return redirect('/obat')->with('success', 'Data Obat Berhasil Dihapus!');
-            // Temukan data berdasarkan ID
+        // Temukan data berdasarkan ID
         $data = Obat::find($id);
-        if (!$data) {
-            return response()->json(['message' => 'Data not found'], 404);
-        }
-
         // Hapus data
         $data->delete();
-        return redirect('/obat')->with('success', 'Data Obat Berhasil Dihapus!');
+        return redirect('/obat')->with('success','Data Obat '.$data['nama']. ' Berhasil Dihapus!');
 
     }
     public function detail($id)

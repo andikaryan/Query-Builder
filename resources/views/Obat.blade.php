@@ -4,11 +4,6 @@
 @section('main-content')
 <!-- SideBar -->
 <div class="container-fluid">
-  @if ($message = Session::get('success'))
-      <div class="alert alert-success alert-block">
-          <strong>{{ $message }}</strong>
-      </div>
-    @endif
       <div class="row flex-nowrap" style="width:85%;">
         <div style="background-color: #DDD;" class="col-auto col-md-4 col-lg-2 min-vh-100 d-flex flex-column justify content">
           <div style="background-color: #DDD;" class="">
@@ -25,6 +20,11 @@
           </div>
         </div>
         <div class="badan">
+            @if ($message = Session::get('success'))
+            <div class="alert alert-success alert-block" role="alert" id="alert">
+                <strong>{{ $message }}</strong>
+            </div>
+          @endif
             <div class="judul">
                 <div>
                     Obat
@@ -36,7 +36,7 @@
                 </a>
             </div>
             <div>
-                <table align="center">
+                <table align="center" class="tTabel">
                     <thead>
                         <tr>
                             <th>No</th>
@@ -55,14 +55,15 @@
                           $counter += 1;
                         @endphp
                         <tr>
+                            {{-- onclick="location.href='{{ url('/detailObat/'.$item->id)}}'" --}}
                             <td>{{ $counter}}</td>
                             <td>{{ $item->nama}}</td>
                             <td>{{ $item->kegunaan}}</td>
-                            <td>Rp{{ $item->harga}}</td>
+                            <td>Rp {{ $item->harga}}</td>
                             <td>
-                                <a class="btn btn-success btn-sm" href="{{ url('/detail-obat/'.$item->id)}}">Detail</a>
-                                <a class="btn btn-primary btn-sm" href="{{ url('/edit-obat/'.$item->id)}}">Edit</a>
-                                <a class="btn btn-danger btn-sm" href="{{ url('/hapus-obat/'.$item->id)}}" onclick="return confirm('anda yakin ingin menghapus?')">Hapus</a>
+                                <a class="tEdit" href="{{ url('/edit-obat/'.$item->id)}}">Edit</a>
+                                <a class="tHapus" href="{{ url('/hapus-obat/'.$item->id)}}" onclick="return confirm('anda yakin ingin menghapus?')">Hapus</a>
+                                <a class="tDetail" href="{{ url('/detailObat/'.$item->id)}}">Detail</a>
                             </td>
                         </tr>
                         @endforeach
@@ -73,10 +74,14 @@
     </div>
   </div>
 
-
-
-
 </body>
 </html>
+
+<script type="text/javascript" src="http://code.jquery.com/jquery-latest.js"></script>
+<script type="text/javascript">
+    $(function(){
+     $('#alert').delay(3000).fadeOut();
+    });
+  </script>
 
 @endsection

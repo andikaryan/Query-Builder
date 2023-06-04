@@ -4,11 +4,6 @@
 @section('main-content')
 <!-- SideBar -->
 <div class="container-fluid">
-@if ($message = Session::get('success'))
-      <div class="alert alert-success alert-block">
-          <strong>{{ $message }}</strong>
-      </div>
-    @endif
       <div class="row flex-nowrap" style="width:85%;">
         <div style="background-color: #DDD;" class="col-auto col-md-4 col-lg-2 min-vh-100 d-flex flex-column justify content">
           <div style="background-color: #DDD;" class="">
@@ -25,6 +20,11 @@
           </div>
         </div>
         <div class="badan">
+            @if ($message = Session::get('success'))
+            <div class="alert alert-success alert-block" role="alert" id="alert">
+                <strong>{{ $message }}</strong>
+            </div>
+          @endif
             <div class="judul">
                 <div>
                     Pasien
@@ -36,7 +36,7 @@
                 </a>
             </div>
             <div>
-                <table align="center">
+                <table align="center" class="tTabel">
                     <thead>
                         <tr>
                             <th>No</th>
@@ -60,9 +60,10 @@
                             <td>{{ $item->ruangan}}</td>
                             <td>{{ $item->penyakit}}</td>
                             <td>
-                                <a class="btn btn-primary btn-sm" href="{{ url('/edit-pasien/'.$item->id)}}" >Edit</a>
-                                <a class="btn btn-danger btn-sm" href="{{ url('/hapus-pasien/'.$item->id)}}" onclick="return confirm('anda yakin ingin menghapus?')">Hapus</a>
-                        
+                                <a class="tEdit" href="{{ url('/edit-pasien/'.$item->id)}}" >Edit</a>
+                                <a class="tHapus" href="{{ url('/hapus-pasien/'.$item->id)}}" onclick="return confirm('anda yakin ingin menghapus?')">Hapus</a>
+                                <a class="tDetail" href="{{ url('/detailPasien/'.$item->id)}}">Detail</a>
+
                             </td>
 
                         </tr>
@@ -76,5 +77,12 @@
 
 </body>
 </html>
+
+<script type="text/javascript" src="http://code.jquery.com/jquery-latest.js"></script>
+<script type="text/javascript">
+    $(function(){
+     $('#alert').delay(2000).fadeOut();
+    });
+  </script>
 
 @endsection
