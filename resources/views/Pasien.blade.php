@@ -63,7 +63,6 @@
                                 <a class="tEdit" href="{{ url('/edit-pasien/'.$item->id)}}" >Edit</a>
                                 <a class="tHapus" href="{{ url('/hapus-pasien/'.$item->id)}}" onclick="return confirm('anda yakin ingin menghapus?')">Hapus</a>
                                 <a class="tDetail" href="{{ url('/detailPasien/'.$item->id)}}">Detail</a>
-
                             </td>
 
                         </tr>
