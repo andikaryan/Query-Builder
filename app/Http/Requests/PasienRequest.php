@@ -22,20 +22,32 @@ class PasienRequest extends FormRequest
     public function rules(): array
     {
         $rules = [
-            'nama' => [
+            'nama_pasien' => [
                 'required',
                 'string',
                 'max:200'
             ],
-            'ruangan' => [
+            'tanggal_lahir' => [
+                'required',
+                'date',
+            ],
+            'tanggal_opname' => [
+                'required',
+                'date',
+            ],
+            'asal' => [
                 'required',
                 'string',
-                'max:100'
+                'max:200'
             ],
             'penyakit' => [
                 'required',
                 'string',
                 'max:100'
+            ],
+            'ruangan_id' => [
+                'required',
+                'integer',
             ]
         ];
 

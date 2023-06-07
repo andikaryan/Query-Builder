@@ -4,14 +4,14 @@ namespace App\Http\Requests;
 
 use Illuminate\Foundation\Http\FormRequest;
 
-class ObatRequest extends FormRequest
+class RuanganRequest extends FormRequest
 {
     /**
      * Determine if the user is authorized to make this request.
      */
     public function authorize(): bool
     {
-        return true;
+        return false;
     }
 
     /**
@@ -22,20 +22,16 @@ class ObatRequest extends FormRequest
     public function rules(): array
     {
         $rules = [
-            'nama' => [
+            'nama_ruangan' => [
                 'required',
                 'string',
                 'max:200'
             ],
-            'kegunaan' => [
+            'status' => [
                 'required',
                 'string',
-                'max:100'
+                'max:200'
             ],
-            'harga' => [
-                'required',
-                'integer'
-            ]
         ];
 
         return $rules;

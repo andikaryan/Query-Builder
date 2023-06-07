@@ -5,7 +5,7 @@
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Edit Data obat</title>
+    <title>Edit Data Ruangan</title>
     <link rel="stylesheet" href="{{ asset('assets/css/EditPasienObat.css')}}">
     <link href="//netdna.bootstrapcdn.com/font-awesome/4.0.3/css/font-awesome.css" rel="stylesheet" />
 </head>
@@ -16,7 +16,7 @@
 
 <body>
     <div class="kembali">
-        <a href="{{ url('/obat')}}">
+        <a href="{{ url('/ruangan')}}">
             <button class="tombol">
                 <i class="fa fa-chevron-left fa-lg"></i>
                 <span class="tTombol">Kembali</span>
@@ -26,23 +26,20 @@
 
     <div class="box">
         <div class="sub">
-            <p>Edit Data Obat</p>
+            <p>Edit Data Ruangan</p>
         </div>
 
 
-        <form action="{{ url('/update-obat/'.$obats->id) }}" method="POST" enctype="multipart/form-data">
+        <form action="{{ url('/update-ruangan/'.$ruangan->id) }}" method="POST" enctype="multipart/form-data">
             @csrf
             @method('PUT')
 
             <div class="form">
-                <label for="">Nama Obat</label><br>
-                <input type="text" name="nama" class="form-control" placeholder="Nama Obat..." value="{{$obats->nama}}">
+                <label for="">Nama Ruangan</label><br>
+                <input type="text" name="nama_ruangan" class="form-control" value="{{$ruangan->nama_ruangan}}">
 
-                <label for="">kegunaan</label><br>
-                <input type="text" name="kegunaan" class="form-control" placeholder="Kegunaan..." value="{{$obats->kegunaan}}">
-
-                <label for="">Harga</label><br>
-                <input type="text" name="harga" class="form-control" placeholder="Harga..." value="{{$obats->harga}}">
+                <label for="">Status</label><br>
+                <input type="text" name="status" class="form-control"  value="{{$ruangan->status}}">
 
                 <div class="submit">
                     <input type="submit" value="Simpan">

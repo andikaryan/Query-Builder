@@ -34,13 +34,22 @@
             @csrf
             <div class="form">
                 <label for="">Nama Pasien</label><br>
-                <input type="text" name="nama" class="form-control" placeholder="Nama Pasien...">
+                <input type="text" name="nama_pasien" class="form-control" placeholder="Nama Pasien...">
 
-                <label for="">Ruangan</label><br>
-                <input type="text" name="ruangan" class="form-control" placeholder="Ruangan...">
+                <label for="">Tanggal Lahir</label><br>
+                <input type="date" name="tanggal_lahir" class="form-control" placeholder="Tanggal Lahir...">
+
+                <label for="">Tanggal Opname</label><br>
+                <input type="date" name="tanggal_opname" class="form-control" placeholder="Tanggal Opname...">
+
+                <label for="">Asal</label><br>
+                <input type="text" name="asal" class="form-control" placeholder="Asal...">
 
                 <label for="">Penyakit</label><br>
                 <input type="text" name="penyakit" class="form-control" placeholder="Penyakit...">
+
+                <label for="">Ruangan</label><br>
+                <input type="text" name="ruangan_id" class="form-control" placeholder="Ruangan...">
 
                 <div class="submit">
                     <input type="submit" value="Tambah">

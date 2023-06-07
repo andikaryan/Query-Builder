@@ -5,7 +5,7 @@
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Tambah Data Obat</title>
+    <title>Tambah Data Ruangan</title>
     <link rel="stylesheet" href="{{ asset('assets/css/TambahPasienObat.css')}}">
     <link href="//netdna.bootstrapcdn.com/font-awesome/4.0.3/css/font-awesome.css" rel="stylesheet" />
 </head>
@@ -18,7 +18,7 @@
 <body>
 
     <div class="kembali">
-        <a href="{{url ('/obat')}}">
+        <a href="{{url ('/ruangan')}}">
             <button class="tombol">
                 <i class="fa fa-chevron-left fa-lg"></i>
                 <span class="tTombol">Kembali</span>
@@ -28,20 +28,21 @@
 
     <div class="box">
         <div class="sub">
-            <p>Tambah Obat</p>
+            <p>Tambah Ruangan</p>
         </div>
 
-        <form action="{{ url('/tambah-obat') }}" method="POST" enctype="multipart/form-data">
+        <form action="{{ url('/tambah-ruangan') }}" method="POST" enctype="multipart/form-data">
             @csrf
             <div class="form">
-                <label for="">Nama Obat</label><br>
-                <input type="text" name="nama" class="form-control" placeholder="Nama Obat...">
+                <label for="">Nama Ruangan</label><br>
+                <input type="text" name="nama_ruangan" class="form-control" placeholder="Nama Ruangan...">
 
-                <label for="">Kegunaan</label><br>
-                <input type="text" name="kegunaan" class="form-control" placeholder="Kegunaan...">
-
-                <label for="">Harga</label><br>
-                <input type="text" name="harga" class="form-control" placeholder="Harga...">
+                <label for="">Status</label><br>
+                <select name="status" class="form-control" placeholder="Status...">
+                    <option value="">Status</option>
+                    <option value="Tersedia">Tersedia</option>
+                    <option value="Tidak Tersedia">Tidak Tersedia</option>
+                </select>
 
                 <div class="submit">
                     <input type="submit" value="Tambah">

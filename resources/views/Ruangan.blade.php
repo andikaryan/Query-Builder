@@ -14,7 +14,7 @@
             <a href="{{ url('/pasien')}}" class="nav-link text-black" aria-current="page">Pasien</a>
           </li>
           <li class="nav-item">
-            <a href="{{ url('/obat')}}" style="background-color: #0077B6;" class="nav-link active">Obat</a>
+            <a href="{{ url('/obat')}}" style="background-color: #0077B6;" class="nav-link active">Ruangan</a>
           </li>
         </ul>
       </div>
@@ -27,9 +27,9 @@
       @endif
       <div class="judul">
         <div>
-          Obat
+          Ruangan
         </div>
-        <a href="{{ url('/tambah-obat')}}" style="text-decoration: none;">
+        <a href="{{ url('/tambah-ruangan')}}" style="text-decoration: none;">
           <div class="tambah">
             Tambah
           </div>
@@ -40,9 +40,8 @@
           <thead>
             <tr>
               <th>No</th>
-              <th>Nama Obat</th>
-              <th>Kegunaan</th>
-              <th>Harga</th>
+              <th>Nama Ruangan</th>
+              <th>Status</th>
               <th>Aksi</th>
             </tr>
           </thead>
@@ -50,20 +49,17 @@
             @php
             $counter = 0;
             @endphp
-            @foreach ($obat as $item)
+            @foreach ($ruangan as $item)
             @php
             $counter += 1;
             @endphp
             <tr>
-              {{-- onclick="location.href='{{ url('/detailObat/'.$item->id)}}'" --}}
               <td>{{ $counter}}</td>
-              <td>{{ $item->nama}}</td>
-              <td>{{ $item->kegunaan}}</td>
-              <td>Rp {{ $item->harga}}</td>
+              <td>{{ $item->nama_ruangan}}</td>
+              <td>{{ $item->status}}</td>
               <td>
-                <a class="tEdit" href="{{ url('/edit-obat/'.$item->id)}}">Edit</a>
-                <a class="tHapus" href="{{ url('/hapus-obat/'.$item->id)}}" onclick="return confirm('anda yakin ingin menghapus?')">Hapus</a>
-                <a class="tDetail" href="{{ url('/detailObat/'.$item->id)}}">Detail</a>
+                <a class="tEdit" href="{{ url('/edit-ruangan/'.$item->id)}}">Edit</a>
+                <a class="tDetail" href="{{ url('/detail-ruangan/'.$item->id)}}">Detail</a>
               </td>
             </tr>
             @endforeach

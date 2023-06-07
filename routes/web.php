@@ -29,19 +29,17 @@ Route::put('/update-pasien/{id}', [App\Http\Controllers\PasienController::class,
 // Rute dibawah untuk menghapus data yang diakses
 Route::get('/hapus-pasien/{id}', [App\Http\Controllers\PasienController::class, 'destroy']);
 //Rute dibawah untuk melihat detail data Pasien
-Route::get('/detailPasien/{id}', [App\Http\Controllers\PasienController::class, 'detail']);
+Route::get('/detail-pasien/{id}', [App\Http\Controllers\PasienController::class, 'detail']);
 
 // Rute dibawah untuk akses data obat dari database dan ditampilkan ke web
-Route::get('/obat', [App\Http\Controllers\ObatController::class, 'index']);
+Route::get('/ruangan', [App\Http\Controllers\RuanganController::class, 'index']);
 // Rute dibawah untuk mengakses halaman tambah data obat
-Route::get('/tambah-obat', [App\Http\Controllers\ObatController::class, 'create']);
+Route::get('/tambah-ruangan', [App\Http\Controllers\RuanganController::class, 'create']);
 // Rute dibawah untuk mengirim data obat dari web ke database
-Route::post('/tambah-obat', [App\Http\Controllers\ObatController::class, 'simpan']);
+Route::post('/tambah-ruangan', [App\Http\Controllers\RuanganController::class, 'simpan']);
 // Rute dibawah untuk akses data obat dari database dan ditampilkan ke halaman edit data obat
-Route::get('/edit-obat/{id}', [App\Http\Controllers\ObatController::class, 'edit']);
+Route::get('/edit-ruangan/{id}', [App\Http\Controllers\RuanganController::class, 'edit']);
 // Rute dibawah untuk memperbarui data obat
-Route::put('/update-obat/{id}', [App\Http\Controllers\ObatController::class, 'update']);
-// Rute dibawah untuk menghapus data yang diakses
-Route::get('/hapus-obat/{id}', [App\Http\Controllers\ObatController::class, 'destroy']);
+Route::put('/update-ruangan/{id}', [App\Http\Controllers\RuanganController::class, 'update']);
 //Rute dibawah untuk melihat detail data Obat
-Route::get('/detailObat/{id}', [App\Http\Controllers\ObatController::class, 'detail']);
+Route::get('/detail-ruangan/{id}', [App\Http\Controllers\ObatController::class, 'detail']);

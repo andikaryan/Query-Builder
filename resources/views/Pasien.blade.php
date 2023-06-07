@@ -14,7 +14,7 @@
             <a href="{{ url('/pasien')}}" style="background-color: #0077B6;" class="nav-link active" aria-current="page">Pasien</a>
           </li>
           <li class="nav-item">
-            <a href="{{ url('/obat')}}" class="nav-link text-black">Obat</a>
+            <a href="{{ url('/ruangan')}}" class="nav-link text-black">Ruangan</a>
           </li>
         </ul>
       </div>
@@ -41,8 +41,11 @@
             <tr>
               <th>No</th>
               <th>Nama Pasien</th>
-              <th>Ruangan</th>
+              <th>Tanggal Lahir</th>
+              <th>Tanggal Opname</th>
+              <th>Asal</th>
               <th>Penyakit</th>
+              <th>Ruangan</th>
               <th>Aksi</th>
             </tr>
           </thead>
@@ -56,13 +59,16 @@
             @endphp
             <tr>
               <td>{{ $counter}}</td>
-              <td>{{ $item->nama}}</td>
-              <td>{{ $item->ruangan}}</td>
+              <td>{{ $item->nama_pasien}}</td>
+              <td>{{ $item->tanggal_lahir}}</td>
+              <td>{{ $item->tanggal_opname}}</td>
+              <td>{{ $item->asal}}</td>
               <td>{{ $item->penyakit}}</td>
+              <td>{{ $item->rgn->nama_ruangan}}</td>
               <td>
                 <a class="tEdit" href="{{ url('/edit-pasien/'.$item->id)}}">Edit</a>
                 <a class="tHapus" href="{{ url('/hapus-pasien/'.$item->id)}}" onclick="return confirm('anda yakin ingin menghapus?')">Hapus</a>
-                <a class="tDetail" href="{{ url('/detailPasien/'.$item->id)}}">Detail</a>
+                <a class="tDetail" href="{{ url('/detail-pasien/'.$item->id)}}">Detail</a>
               </td>
 
             </tr>
