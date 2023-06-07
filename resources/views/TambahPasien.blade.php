@@ -6,7 +6,7 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Tambah Data Pasien</title>
-    <link rel="stylesheet" href="{{ asset('assets/css/TambahPasienObat.css')}}">
+    <link rel="stylesheet" href="{{ asset('assets/css/TambahPasienRuangan.css')}}">
     <link href="//netdna.bootstrapcdn.com/font-awesome/4.0.3/css/font-awesome.css" rel="stylesheet" />
 </head>
 <!-- Extend ini digunakan untuk memanggil data dari template -->
@@ -49,7 +49,12 @@
                 <input type="text" name="penyakit" class="form-control" placeholder="Penyakit...">
 
                 <label for="">Ruangan</label><br>
-                <input type="text" name="ruangan_id" class="form-control" placeholder="Ruangan...">
+                <select name="ruangan_id" class="form-control">
+                    <option value="">-Pilih Ruangan-</option>
+                    @foreach ($ruangans as $item)
+                        <option value="{{$item->id}}">{{$item->nama_ruangan}}</option>
+                    @endforeach
+                </select>
 
                 <div class="submit">
                     <input type="submit" value="Tambah">

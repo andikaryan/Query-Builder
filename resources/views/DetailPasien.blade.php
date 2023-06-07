@@ -6,7 +6,7 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Detail Data Pasien</title>
-    <link rel="stylesheet" href="{{ asset('assets/css/DetailPasienObat.css')}}">
+    <link rel="stylesheet" href="{{ asset('assets/css/DetailPasienRuangan.css')}}">
     <link href="//netdna.bootstrapcdn.com/font-awesome/4.0.3/css/font-awesome.css" rel="stylesheet" />
 </head>
 <!-- Extend ini digunakan untuk memanggil data dari template -->
@@ -35,17 +35,32 @@
                     <tr>
                         <td>Nama Pasien</td>
                         <td>:</td>
-                        <th>{{ $pasiens->nama }}</th>
+                        <th>{{ $pasiens->nama_pasien }}</th>
                     </tr>
                     <tr>
-                        <td>Ruangan</td>
+                        <td>Tanggal Lahir</td>
                         <td>:</td>
-                        <th>{{ $pasiens->ruangan }}</th>
+                        <th>{{ $pasiens->tanggal_lahir }}</th>
+                    </tr>
+                    <tr>
+                        <td>Tanggal Opname</td>
+                        <td>:</td>
+                        <th>{{ $pasiens->tanggal_opname }}</th>
+                    </tr>
+                    <tr>
+                        <td>Asal</td>
+                        <td>:</td>
+                        <th>{{ $pasiens->asal }}</th>
                     </tr>
                     <tr>
                         <td>Penyakit</td>
                         <td>:</td>
                         <th>{{ $pasiens->penyakit }}</th>
+                    </tr>
+                    <tr>
+                        <td>Nama ruangan</td>
+                        <td>:</td>
+                        <th>{{ $pasiens->rgn->nama_ruangan }}</th>
                     </tr>
                 </table>
             </div>

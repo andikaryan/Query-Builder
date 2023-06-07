@@ -6,7 +6,7 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Tambah Data Ruangan</title>
-    <link rel="stylesheet" href="{{ asset('assets/css/TambahPasienObat.css')}}">
+    <link rel="stylesheet" href="{{ asset('assets/css/TambahPasienRuangan.css')}}">
     <link href="//netdna.bootstrapcdn.com/font-awesome/4.0.3/css/font-awesome.css" rel="stylesheet" />
 </head>
 
@@ -38,8 +38,8 @@
                 <input type="text" name="nama_ruangan" class="form-control" placeholder="Nama Ruangan...">
 
                 <label for="">Status</label><br>
-                <select name="status" class="form-control" placeholder="Status...">
-                    <option value="">Status</option>
+                <select name="status" class="form-control">
+                    <option value="">-Status-</option>
                     <option value="Tersedia">Tersedia</option>
                     <option value="Tidak Tersedia">Tidak Tersedia</option>
                 </select>

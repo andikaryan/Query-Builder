@@ -20,11 +20,18 @@
       </div>
     </div>
     <div class="badan">
-      @if ($message = Session::get('success'))
-      <div class="alert alert-success alert-block" role="alert" id="alert">
-        <strong>{{ $message }}</strong>
-      </div>
-      @endif
+        @if(Session::has('error'))
+        <div class="alert alert-success alert-block" role="alert" id="alert">
+            {{ Session::get('error') }}
+        </div>
+        @endif
+
+    @if(Session::has('success'))
+        <div class="alert alert-success alert-block" role="alert" id="alert">
+            {{ Session::get('success') }}
+        </div>
+    @endif
+
       <div class="judul">
         <div>
           Ruangan
@@ -59,6 +66,7 @@
               <td>{{ $item->status}}</td>
               <td>
                 <a class="tEdit" href="{{ url('/edit-ruangan/'.$item->id)}}">Edit</a>
+                <a class="tHapus" href="{{ url('/hapus-ruangan/'.$item->id)}}" onclick="return confirm('anda yakin ingin menghapus?')">Hapus</a>
                 <a class="tDetail" href="{{ url('/detail-ruangan/'.$item->id)}}">Detail</a>
               </td>
             </tr>
@@ -78,7 +86,7 @@
 <script type="text/javascript">
   $(function() {
     $('#alert').delay(3000).fadeOut();
-  });
+    });
 </script>
 
 @endsection

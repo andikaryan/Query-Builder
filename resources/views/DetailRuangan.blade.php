@@ -4,8 +4,8 @@
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Detail Data obat</title>
-    <link rel="stylesheet" href="{{ asset('assets/css/DetailPasienObat.css')}}">
+    <title>Detail Data Ruangan</title>
+    <link rel="stylesheet" href="{{ asset('assets/css/DetailPasienRuangan.css')}}">
     <link href="//netdna.bootstrapcdn.com/font-awesome/4.0.3/css/font-awesome.css" rel="stylesheet"/>
 </head>
 <!-- Extend ini digunakan untuk memanggil data dari template -->
@@ -14,7 +14,7 @@
 @section('main-content')
   <body>
     <div class="kembali">
-        <a href="{{ url('/obat')}}">
+        <a href="{{ url('/ruangan')}}">
             <button class="tombol">
                 <i class="fa fa-chevron-left fa-lg"></i>
                 <span class="tTombol">Kembali</span>
@@ -25,25 +25,20 @@
     <div class="box">
             <div class="badan2">
                 <div class="judul2">
-                    Detail Obat
+                    Detail Ruangan
                 </div>
 
                 <div class="deskObat">
                     <table align="center" class="tabel">
                         <tr>
-                            <td>Nama Obat</td>
+                            <td>Nama Ruangan</td>
                             <td>:</td>
-                            <th>{{ $obats->nama }}</th>
+                            <th>{{ $ruangans->nama_ruangan }}</th>
                         </tr>
                         <tr>
-                            <td>Kegunaan</td>
+                            <td>Status</td>
                             <td>:</td>
-                            <th>{{ $obats->kegunaan }}</th>
-                        </tr>
-                        <tr>
-                            <td>Harga</td>
-                            <td>:</td>
-                            <th>Rp {{ $obats->harga }}</th>
+                            <th>{{ $ruangans->status }}</th>
                         </tr>
                     </table>
                 </div>

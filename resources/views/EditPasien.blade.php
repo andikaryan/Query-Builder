@@ -6,7 +6,7 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Edit Data Pasien</title>
-    <link rel="stylesheet" href="{{ asset('assets/css/EditPasienObat.css')}}">
+    <link rel="stylesheet" href="{{ asset('assets/css/EditPasienRuangan.css')}}">
     <link href="//netdna.bootstrapcdn.com/font-awesome/4.0.3/css/font-awesome.css" rel="stylesheet" />
 </head>
 <!-- Extend ini digunakan untuk memanggil data dari template -->
@@ -36,13 +36,27 @@
 
             <div class="form">
                 <label for="">Nama Pasien</label><br>
-                <input type="text" name="nama" class="form-control" placeholder="Nama Pasien..." value="{{$pasiens->nama}}">
+                <input type="text" name="nama_pasien" class="form-control" value="{{$pasiens->nama_pasien}}">
 
-                <label for="">Ruangan</label><br>
-                <input type="text" name="ruangan" class="form-control" placeholder="Ruangan..." value="{{$pasiens->ruangan}}">
+                <label for="">Tanggal Lahir</label><br>
+                <input type="date" name="tanggal_lahir" class="form-control" value="{{$pasiens->tanggal_lahir}}">
+
+                <label for="">Tanggal Opname</label><br>
+                <input type="date" name="tanggal_opname" class="form-control" value="{{$pasiens->tanggal_opname}}">
+
+                <label for="">Asal</label><br>
+                <input type="text" name="asal" class="form-control" value="{{$pasiens->asal}}">
 
                 <label for="">Penyakit</label><br>
-                <input type="text" name="penyakit" class="form-control" placeholder="Penyakit..." value="{{$pasiens->penyakit}}">
+                <input type="text" name="penyakit" class="form-control" value="{{$pasiens->penyakit}}">
+
+                <label for="">Ruangan</label><br>
+                <select name="ruangan_id" class="form-control">
+                    <option value="">Ruangan</option>
+                    @foreach ($ruangans as $item)
+                        <option value="{{$item->id}}">{{$item->nama_ruangan}}</option>
+                    @endforeach
+                </select>
 
                 <div class="submit">
                     <input type="submit" value="Simpan">

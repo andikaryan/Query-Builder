@@ -5,6 +5,8 @@ namespace App\Http\Controllers;
 use App\Http\Controllers\Controller;
 use App\Http\Requests\PasienRequest;
 use App\Models\PasienModel;
+use App\Models\RuanganModel;
+use GuzzleHttp\Psr7\Request;
 use Illuminate\Support\Facades\DB;
 
 class PasienController extends Controller
@@ -25,7 +27,8 @@ class PasienController extends Controller
      */
     public function create()
     {
-        return view('TambahPasien');
+        $ruangans = RuanganModel::tersedia()->get();
+        return view('TambahPasien',compact('ruangans'));
     }
 
     /**
@@ -39,59 +42,36 @@ class PasienController extends Controller
         return redirect('/pasien')->with('success', 'Data Pasien Berhasil Ditambah!');
     }
 
-    /**
-     * Untuk menampilkan halaman edit pasien yang sesuai id yang dipilih
-     */
-    //     public function edit($id)
-    //     {
-    //         $pasien = pasien::find($id);
-    //         return view('editPasien')->with('pasiens', $pasien);
-    //         // $items = DB::select('select * from pasiens where id=?', [$id]);
+    public function edit(string $id)
+    {
+        $ruangans = RuanganModel::tersedia()->get();
+        $pasien = PasienModel::find($id);
+        return view('/EditPasien',compact('ruangans'), ['pasiens' => $pasien]);
+    }
 
-
-    //         if(count($pasien) <= 0){
-    //             return "Data tidak ditemukan";
-    //         }
-    //         $item = $pasien[0];
-
-    //         return view('EditPasien', [
-    //             'pasiens' => $item
-    //         ]);
-    //     }
-
-    //     /**
-    //      * Untuk memperbarui data yang ada di database dan akan ditampilkan di halaman web
-    //      */
-    //     public function update(PasienRequest $request, $id)
-    //     {
-    //         $nama = $request -> input('nama');
-    //         $ruangan = $request -> input('ruangan');
-    //         $penyakit = $request -> input('penyakit');
-    //         DB::table('pasiens')
-    //             -> where([
-    //                 'id' => $id
-    //             ])
-    //             -> update([
-    //                 'nama' => $nama,
-    //                 'ruangan' => $ruangan,
-    //                 'penyakit' => $penyakit
-    //             ]);
-    //         return redirect('/pasien')->with('success','Data Pasien '.$nama. ' Berhasil Diperbarui!');
-    //     }
-
-    /**
-     * Untuk menghapus data yang dipilih dari database maupun di web
-     */
+    public function update(PasienRequest $request, string $id)
+    {
+        $pasien = PasienModel::find($id);
+        $pasien->nama_pasien = $request->nama_pasien;
+        $pasien->tanggal_lahir = $request->tanggal_lahir;
+        $pasien->tanggal_opname = $request->tanggal_opname;
+        $pasien->asal = $request->asal;
+        $pasien->penyakit = $request->penyakit;
+        $pasien->ruangan_id = $request->ruangan_id;
+        $pasien->save();
+        return redirect('/pasien')->with('success', 'Data Pasien Berhasil Diubah!');
+    }
     public function destroy($id)
     {
-        $ruangan = PasienModel::find($id);
-        $ruangan->delete();
+        $pasien = PasienModel::find($id);
+        $pasien->delete();
         return redirect('/pasien')->with('success','Data Pasien Berhasil Dihapus!');
     }
 
-    //     public function detail($id)
-    //     {
-    //         $pasien = Pasien::find($id);
-    //         return view('detailPasien')->with('pasiens', $pasien);
-    //     }
+        public function detail($id)
+        {
+            $ruangans = RuanganModel::tersedia()->get();
+            $pasien = PasienModel::find($id);
+            return view('/DetailPasien',compact('ruangans'), ['pasiens' => $pasien]);
+        }
 }

@@ -20,11 +20,11 @@
       </div>
     </div>
     <div class="badan">
-      @if ($message = Session::get('success'))
-      <div class="alert alert-success alert-block" role="alert" id="alert">
-        <strong>{{ $message }}</strong>
-      </div>
-      @endif
+        @if(Session::has('success'))
+        <div class="alert alert-success alert-block" role="alert" id="alert">
+            {{ Session::get('success') }}
+        </div>
+    @endif
       <div class="judul">
         <div>
           Pasien

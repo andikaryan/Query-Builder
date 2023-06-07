@@ -6,7 +6,7 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Edit Data Ruangan</title>
-    <link rel="stylesheet" href="{{ asset('assets/css/EditPasienObat.css')}}">
+    <link rel="stylesheet" href="{{ asset('assets/css/EditPasienRuangan.css')}}">
     <link href="//netdna.bootstrapcdn.com/font-awesome/4.0.3/css/font-awesome.css" rel="stylesheet" />
 </head>
 <!-- Extend ini digunakan untuk memanggil data dari template -->
@@ -30,16 +30,20 @@
         </div>
 
 
-        <form action="{{ url('/update-ruangan/'.$ruangan->id) }}" method="POST" enctype="multipart/form-data">
+        <form action="{{ url('/update-ruangan/'.$ruangans->id) }}" method="POST" enctype="multipart/form-data">
             @csrf
             @method('PUT')
 
             <div class="form">
                 <label for="">Nama Ruangan</label><br>
-                <input type="text" name="nama_ruangan" class="form-control" value="{{$ruangan->nama_ruangan}}">
+                <input type="text" name="nama_ruangan" class="form-control" value="{{$ruangans->nama_ruangan}}">
 
                 <label for="">Status</label><br>
-                <input type="text" name="status" class="form-control"  value="{{$ruangan->status}}">
+                <select name="status" class="form-control">
+                    <option value="">{{$ruangans->status}}</option>
+                    <option value="Tersedia">Tersedia</option>
+                    <option value="Tidak Tersedia">Tidak Tersedia</option>
+                </select>
 
                 <div class="submit">
                     <input type="submit" value="Simpan">

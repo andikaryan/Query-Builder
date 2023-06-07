@@ -41,5 +41,7 @@ Route::post('/tambah-ruangan', [App\Http\Controllers\RuanganController::class, '
 Route::get('/edit-ruangan/{id}', [App\Http\Controllers\RuanganController::class, 'edit']);
 // Rute dibawah untuk memperbarui data obat
 Route::put('/update-ruangan/{id}', [App\Http\Controllers\RuanganController::class, 'update']);
+// Rute dibawah untuk menghapus data yang diakses
+Route::get('/hapus-ruangan/{id}', [App\Http\Controllers\RuanganController::class, 'destroy']);
 //Rute dibawah untuk melihat detail data Obat
-Route::get('/detail-ruangan/{id}', [App\Http\Controllers\ObatController::class, 'detail']);
+Route::get('/detail-ruangan/{id}', [App\Http\Controllers\RuanganController::class, 'detail']);

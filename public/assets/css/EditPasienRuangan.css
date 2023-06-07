@@ -1,7 +1,6 @@
 body{
     margin: 0px;
 }
-
   .kembali{
     display: flex;
     margin: 30px 80px 0px 80px;
@@ -41,7 +40,7 @@ body{
     margin-bottom: 80px;
     font-family: "Montserrat", sans-serif;
     font-size: 14px;
-    color: black;
+    color: rgb(0, 0, 0);
     border-radius: 10px;
 }
 
@@ -95,4 +94,14 @@ input[type=submit] {
 input[type=submit]:hover{
     background-color: #FFCB74;
     color: rgb(0, 0, 0);
+}
+
+input.form-control {
+    font-size: 14px;
+    padding: 12px 20px;
+}
+
+select.form-control {
+    font-size: 14px;
+    padding: 12px 20px;
 }
