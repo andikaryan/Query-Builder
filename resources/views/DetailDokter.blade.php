@@ -27,45 +27,25 @@
     <div class="box">
         <div class="badan2">
             <div class="judul2">
-                Detail Pasien
+                Detail Dokter
             </div>
 
             <div class="deskObat">
                 <table align="center" class="tabel">
                     <tr>
-                        <td>Nama Pasien</td>
-                        <td>:</td>
-                        <th>{{ $pasiens->nama_pasien }}</th>
-                    </tr>
-                    <tr>
-                        <td>Tanggal Lahir</td>
-                        <td>:</td>
-                        <th>{{ $pasiens->tanggal_lahir }}</th>
-                    </tr>
-                    <tr>
-                        <td>Tanggal Opname</td>
-                        <td>:</td>
-                        <th>{{ $pasiens->tanggal_opname }}</th>
-                    </tr>
-                    <tr>
-                        <td>Asal</td>
-                        <td>:</td>
-                        <th>{{ $pasiens->asal }}</th>
-                    </tr>
-                    <tr>
-                        <td>Penyakit</td>
-                        <td>:</td>
-                        <th>{{ $pasiens->dtr->spesialis }}</th>
-                    </tr>
-                    <tr>
-                        <td>Nama ruangan</td>
-                        <td>:</td>
-                        <th>{{ $pasiens->rgn->nama_ruangan }}</th>
-                    </tr>
-                    <tr>
                         <td>Nama Dokter</td>
                         <td>:</td>
-                        <th>{{ $pasiens->dtr->nama_dokter }}</th>
+                        <th>{{ $dokters->nama_dokter }}</th>
+                    </tr>
+                    <tr>
+                        <td>Spesialis</td>
+                        <td>:</td>
+                        <th>{{ $dokters->spesialis }}</th>
+                    </tr>
+                    <tr>
+                        <td>Nomor Telepon</td>
+                        <td>:</td>
+                        <th>{{ $dokters->nomor_telepon }}</th>
                     </tr>
                 </table>
             </div>

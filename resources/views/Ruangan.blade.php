@@ -14,7 +14,10 @@
             <a href="{{ url('/pasien')}}" class="nav-link text-black" aria-current="page">Pasien</a>
           </li>
           <li class="nav-item">
-            <a href="{{ url('/obat')}}" style="background-color: #0077B6;" class="nav-link active">Ruangan</a>
+            <a href="{{ url('/ruangan')}}" style="background-color: #0077B6;" class="nav-link active">Ruangan</a>
+          </li>
+          <li class="nav-item">
+            <a href="{{ url('/dokter')}}" class="nav-link text-black" aria-current="page">Dokter</a>
           </li>
         </ul>
       </div>

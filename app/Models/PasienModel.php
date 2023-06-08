@@ -9,10 +9,14 @@ class PasienModel extends Model
 {
     use HasFactory;
     protected $table = 'pasiens';
-    protected $fillable = ['nama_pasien', 'tanggal_lahir', 'tanggal_opname', 'asal', 'penyakit', 'ruangan_id'];
+    protected $fillable = ['nama_pasien', 'tanggal_lahir', 'tanggal_opname', 'asal', 'dokter_id', 'ruangan_id'];
 
     public function rgn(){
         return $this->belongsTo(RuanganModel::class, 'ruangan_id');
+    }
+
+    public function dtr(){
+        return $this->belongsTo(DokterModel::class, 'dokter_id');
     }
 
     protected static function boot()

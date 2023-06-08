@@ -46,7 +46,12 @@
                 <input type="text" name="asal" class="form-control" placeholder="Asal...">
 
                 <label for="">Penyakit</label><br>
-                <input type="text" name="penyakit" class="form-control" placeholder="Penyakit...">
+                <select name="dokter_id" class="form-control">
+                    <option value="">-Pilih Penyakit-</option>
+                    @foreach ($dokters as $item)
+                        <option value="{{$item->id}}">{{$item->spesialis}}</option>
+                    @endforeach
+                </select>
 
                 <label for="">Ruangan</label><br>
                 <select name="ruangan_id" class="form-control">

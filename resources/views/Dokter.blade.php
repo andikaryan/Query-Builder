@@ -11,28 +11,34 @@
         </a>
         <ul class="nav nav-pills flex-column mt-2">
           <li class="nav-item">
-            <a href="{{ url('/pasien')}}" style="background-color: #0077B6;" class="nav-link active" aria-current="page">Pasien</a>
+            <a href="{{ url('/pasien')}}" class="nav-link text-black">Pasien</a>
           </li>
           <li class="nav-item">
             <a href="{{ url('/ruangan')}}" class="nav-link text-black">Ruangan</a>
           </li>
           <li class="nav-item">
-            <a href="{{ url('/dokter')}}" class="nav-link text-black">Dokter</a>
+            <a href="{{ url('/dokter')}}" style="background-color: #0077B6;" class="nav-link active" aria-current="page">Dokter</a>
           </li>
         </ul>
       </div>
     </div>
     <div class="badan">
-        @if(Session::has('success'))
+        @if(Session::has('error'))
+        <div class="alert alert-success alert-block" role="alert" id="alert">
+            {{ Session::get('error') }}
+        </div>
+        @endif
+
+    @if(Session::has('success'))
         <div class="alert alert-success alert-block" role="alert" id="alert">
             {{ Session::get('success') }}
         </div>
     @endif
       <div class="judul">
         <div>
-          Pasien
+          Dokter
         </div>
-        <a href="{{ url('/tambah-pasien')}}" style="text-decoration: none;">
+        <a href="{{ url('/tambah-dokter')}}" style="text-decoration: none;">
           <div class="tambah">
             Tambah
           </div>
@@ -43,12 +49,9 @@
           <thead>
             <tr>
               <th>No</th>
-              <th>Nama Pasien</th>
-              <th>Tanggal Lahir</th>
-              <th>Tanggal Opname</th>
-              <th>Asal</th>
-              <th>Penyakit</th>
-              <th>Ruangan</th>
+              <th>Nama Dokter</th>
+              <th>Spesialis</th>
+              <th>Nomor Telepon</th>
               <th>Aksi</th>
             </tr>
           </thead>
@@ -56,22 +59,19 @@
             @php
             $counter = 0;
             @endphp
-            @foreach ($pasien as $item)
+            @foreach ($dokter as $item)
             @php
             $counter += 1;
             @endphp
             <tr>
               <td>{{ $counter}}</td>
-              <td>{{ $item->nama_pasien}}</td>
-              <td>{{ $item->tanggal_lahir}}</td>
-              <td>{{ $item->tanggal_opname}}</td>
-              <td>{{ $item->asal}}</td>
-              <td>{{ $item->dtr->spesialis}}</td>
-              <td>{{ $item->rgn->nama_ruangan}}</td>
+              <td>{{ $item->nama_dokter}}</td>
+              <td>{{ $item->spesialis}}</td>
+              <td>{{ $item->nomor_telepon}}</td>
               <td>
-                <a class="tEdit" href="{{ url('/edit-pasien/'.$item->id)}}">Edit</a>
-                <a class="tHapus" href="{{ url('/hapus-pasien/'.$item->id)}}" onclick="return confirm('anda yakin ingin menghapus?')">Hapus</a>
-                <a class="tDetail" href="{{ url('/detail-pasien/'.$item->id)}}">Detail</a>
+                <a class="tEdit" href="{{ url('/edit-dokter/'.$item->id)}}">Edit</a>
+                <a class="tHapus" href="{{ url('/hapus-dokter/'.$item->id)}}" onclick="return confirm('anda yakin ingin menghapus?')">Hapus</a>
+                <a class="tDetail" href="{{ url('/detail-dokter/'.$item->id)}}">Detail</a>
               </td>
 
             </tr>

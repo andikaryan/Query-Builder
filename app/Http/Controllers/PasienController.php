@@ -6,6 +6,7 @@ use App\Http\Controllers\Controller;
 use App\Http\Requests\PasienRequest;
 use App\Models\PasienModel;
 use App\Models\RuanganModel;
+use App\Models\DokterModel;
 use GuzzleHttp\Psr7\Request;
 use Illuminate\Support\Facades\DB;
 
@@ -28,7 +29,9 @@ class PasienController extends Controller
     public function create()
     {
         $ruangans = RuanganModel::tersedia()->get();
-        return view('TambahPasien',compact('ruangans'));
+        $dokters = DokterModel::all();
+        return view('TambahPasien', compact('ruangans','dokters'));
+
     }
 
     /**
@@ -46,7 +49,7 @@ class PasienController extends Controller
     {
         $ruangans = RuanganModel::tersedia()->get();
         $pasien = PasienModel::find($id);
-        return view('/EditPasien',compact('ruangans'), ['pasiens' => $pasien]);
+        return view('/EditPasien', compact('ruangans'), ['pasiens' => $pasien]);
     }
 
     public function update(PasienRequest $request, string $id)
@@ -65,13 +68,13 @@ class PasienController extends Controller
     {
         $pasien = PasienModel::find($id);
         $pasien->delete();
-        return redirect('/pasien')->with('success','Data Pasien Berhasil Dihapus!');
+        return redirect('/pasien')->with('success', 'Data Pasien Berhasil Dihapus!');
     }
 
-        public function detail($id)
-        {
-            $ruangans = RuanganModel::tersedia()->get();
-            $pasien = PasienModel::find($id);
-            return view('/DetailPasien',compact('ruangans'), ['pasiens' => $pasien]);
-        }
+    public function detail($id)
+    {
+        $ruangans = RuanganModel::tersedia()->get();
+        $pasien = PasienModel::find($id);
+        return view('/DetailPasien', compact('ruangans'), ['pasiens' => $pasien]);
+    }
 }
