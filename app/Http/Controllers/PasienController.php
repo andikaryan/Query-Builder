@@ -75,6 +75,8 @@ class PasienController extends Controller
     {
         $ruangans = RuanganModel::tersedia()->get();
         $pasien = PasienModel::find($id);
-        return view('/DetailPasien', compact('ruangans'), ['pasiens' => $pasien]);
+        return view('/DetailPasien', compact('ruangans'), [
+            'pasiens' => $pasien,
+        ]);
     }
 }
