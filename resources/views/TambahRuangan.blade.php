@@ -18,7 +18,7 @@
 <body>
 
     <div class="kembali">
-        <a href="{{url ('/ruangan')}}">
+        <a href="{{url ('admin/ruangan')}}">
             <button class="tombol">
                 <i class="fa fa-chevron-left fa-lg"></i>
                 <span class="tTombol">Kembali</span>
@@ -31,7 +31,7 @@
             <p>Tambah Ruangan</p>
         </div>
 
-        <form action="{{ url('/tambah-ruangan') }}" method="POST" enctype="multipart/form-data">
+        <form action="{{ url('admin/tambah-ruangan') }}" method="POST" enctype="multipart/form-data">
             @csrf
             <div class="form">
                 <label for="">Nama Ruangan</label><br>

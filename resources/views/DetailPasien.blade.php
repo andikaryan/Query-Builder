@@ -16,7 +16,7 @@
 
 <body>
     <div class="kembali">
-        <a href="{{ url('/pasien')}}">
+        <a href="{{ url('admin/pasien')}}">
             <button class="tombol">
                 <i class="fa fa-chevron-left fa-lg"></i>
                 <span class="tTombol">Kembali</span>
@@ -55,7 +55,7 @@
                     <tr>
                         <td>Penyakit</td>
                         <td>:</td>
-                        <th>{{ $pasiens->dtr->spesialis }}</th>
+                        <th>{{ $pasiens->penyakit }} ({{ $pasiens->dtr->spesialis }})</th>
                     </tr>
                     <tr>
                         <td>Nama ruangan</td>

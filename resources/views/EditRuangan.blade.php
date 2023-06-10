@@ -16,7 +16,7 @@
 
 <body>
     <div class="kembali">
-        <a href="{{ url('/ruangan')}}">
+        <a href="{{ url('admin/ruangan')}}">
             <button class="tombol">
                 <i class="fa fa-chevron-left fa-lg"></i>
                 <span class="tTombol">Kembali</span>
@@ -30,7 +30,7 @@
         </div>
 
 
-        <form action="{{ url('/update-ruangan/'.$ruangans->id) }}" method="POST" enctype="multipart/form-data">
+        <form action="{{ url('admin/update-ruangan/'.$ruangans->id) }}" method="POST" enctype="multipart/form-data">
             @csrf
             @method('PUT')
 
@@ -40,7 +40,7 @@
 
                 <label for="">Status</label><br>
                 <select name="status" class="form-control">
-                    <option value="">{{$ruangans->status}}</option>
+                    <option value="{{$ruangans->status}}">{{$ruangans->status}}</option>
                     <option value="Tersedia">Tersedia</option>
                     <option value="Tidak Tersedia">Tidak Tersedia</option>
                 </select>

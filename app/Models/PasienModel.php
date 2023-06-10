@@ -9,7 +9,7 @@ class PasienModel extends Model
 {
     use HasFactory;
     protected $table = 'pasiens';
-    protected $fillable = ['nama_pasien', 'tanggal_lahir', 'tanggal_opname', 'asal', 'dokter_id', 'ruangan_id'];
+    protected $fillable = ['nama_pasien', 'tanggal_lahir', 'tanggal_opname', 'asal','penyakit', 'dokter_id', 'ruangan_id'];
 
     public function rgn(){
         return $this->belongsTo(RuanganModel::class, 'ruangan_id');

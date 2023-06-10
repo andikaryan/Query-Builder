@@ -13,17 +13,15 @@ class DokterController extends Controller
      */
     public function index()
     {
-        $dokter = DokterModel::all();
-        return view('Dokter', [
-            'dokter' => $dokter
-        ]);
+        $dokter = DokterModel::with('psn')->get();
+        return view('/dokter', compact('dokter'));
     }
      /**
      * Untuk menampilkan halaman tambah pasien
      */
     public function create()
     {
-        return view('TambahDokter');
+        return view('/TambahDokter');
     }
      /**
      * Store a newly created resource in storage.
@@ -33,7 +31,7 @@ class DokterController extends Controller
         $dokter_baru = new DokterModel($request->all());
         $dokter_baru->save();
 
-        return redirect('/dokter')->with('success','Data Ruangan Berhasil Ditambah!');
+        return redirect('admin/dokter')->with('success','Data Dokter Berhasil Ditambah!');
     }
      /**
      * Show the form for editing the specified resource.
@@ -43,7 +41,7 @@ class DokterController extends Controller
         $dokter = DokterModel::find($id);
         return view('/EditDokter', ['dokters' => $dokter]);
     }
-    
+
     /**
      * Update the specified resource in storage.
      */
@@ -54,7 +52,7 @@ class DokterController extends Controller
         $dokter->spesialis = $request->spesialis;
         $dokter->nomor_telepon = $request->nomor_telepon;
         $dokter->save();
-        return redirect('/dokter');
+        return redirect('admin/dokter')->with('success','Data Dokter Berhasil Diubah!');;
     }
     public function destroy($id)
     {
@@ -62,14 +60,14 @@ class DokterController extends Controller
             $dokter = DokterModel::findOrFail($id);
 
             if ($dokter->psn()->exists())  {
-                return redirect('/dokter')->with('error','Data Dokter Tidak Dapat Dihapus Karena Berelasi Dengan Data Pasien!');
+                return redirect('admin/dokter')->with('error','Data Dokter Tidak Dapat Dihapus Karena Berelasi Dengan Data Pasien!');
             }
 
             // Lakukan proses penghapusan data jika tidak ada relasi
             $dokter->delete();
 
             // Redirect ke halaman yang sesuai setelah penghapusan berhasil
-            return redirect('/dokter')->with('success','Data Dokter Berhasil Dihapus!');
+            return redirect('admin/dokter')->with('success','Data Dokter Berhasil Dihapus!');
         }
 
     }
@@ -78,4 +76,6 @@ class DokterController extends Controller
         $dokter = DokterModel::find($id);
         return view('/DetailDokter', ['dokters' => $dokter]);
     }
+
+
 }

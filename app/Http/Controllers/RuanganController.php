@@ -16,7 +16,7 @@ class RuanganController extends Controller
     public function index()
     {
         $ruangan = RuanganModel::all();
-        return view('Ruangan', [
+        return view('/Ruangan', [
             'ruangan'=>$ruangan
         ]) ;
     }
@@ -26,7 +26,7 @@ class RuanganController extends Controller
      */
     public function create()
     {
-        return view('TambahRuangan');
+        return view('/TambahRuangan');
     }
 
     /**
@@ -37,7 +37,7 @@ class RuanganController extends Controller
         $ruangan_baru = new RuanganModel($request->all());
         $ruangan_baru->save();
 
-        return redirect('/ruangan')->with('success','Data Ruangan Berhasil Ditambah!');
+        return redirect('admin/ruangan')->with('success','Data Ruangan Berhasil Ditambah!');
     }
 
     /**
@@ -58,7 +58,7 @@ class RuanganController extends Controller
         $ruangan->nama_ruangan = $request->nama_ruangan;
         $ruangan->status = $request->status;
         $ruangan->save();
-        return redirect('/ruangan');
+        return redirect('admin/ruangan')->with('success','Data Ruangan Berhasil Diubah!');;
     }
 
     public function destroy($id)
@@ -67,14 +67,14 @@ class RuanganController extends Controller
             $ruangan = RuanganModel::findOrFail($id);
 
             if ($ruangan->psn()->exists())  {
-                return redirect('/ruangan')->with('error','Data Ruangan Tidak Dapat Dihapus Karena Berelasi Dengan Data Pasien!');
+                return redirect('admin/ruangan')->with('error','Data Ruangan Tidak Dapat Dihapus Karena Berelasi Dengan Data Pasien!');
             }
 
             // Lakukan proses penghapusan data jika tidak ada relasi
             $ruangan->delete();
 
             // Redirect ke halaman yang sesuai setelah penghapusan berhasil
-            return redirect('/ruangan')->with('success','Data Ruangan Berhasil Dihapus!');
+            return redirect('admin/ruangan')->with('success','Data Ruangan Berhasil Dihapus!');
         }
 
     }

@@ -17,10 +17,11 @@ return new class extends Migration
             $table->date('tanggal_lahir');
             $table->date('tanggal_opname');
             $table->string('asal');
+            $table->string('penyakit');
             $table->foreignId('dokter_id')->references('id')->on('dokters');
             $table->foreignId('ruangan_id')->references('id')->on('ruangans');
             $table->timestamps();
-            
+
         });
     }
 

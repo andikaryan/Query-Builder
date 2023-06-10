@@ -18,7 +18,7 @@ class PasienController extends Controller
     public function index()
     {
         $pasien = PasienModel::all();
-        return view('Pasien', [
+        return view('/pasien', [
             'pasien' => $pasien
         ]);
     }
@@ -30,7 +30,7 @@ class PasienController extends Controller
     {
         $ruangans = RuanganModel::tersedia()->get();
         $dokters = DokterModel::all();
-        return view('TambahPasien', compact('ruangans','dokters'));
+        return view('/TambahPasien', compact('ruangans','dokters'));
 
     }
 
@@ -42,14 +42,15 @@ class PasienController extends Controller
         $pasien_baru = new PasienModel($request->all());
         $pasien_baru->save();
 
-        return redirect('/pasien')->with('success', 'Data Pasien Berhasil Ditambah!');
+        return redirect('admin/pasien')->with('success', 'Data Pasien Berhasil Ditambah!');
     }
 
     public function edit(string $id)
     {
         $ruangans = RuanganModel::tersedia()->get();
         $pasien = PasienModel::find($id);
-        return view('/EditPasien', compact('ruangans'), ['pasiens' => $pasien]);
+        $dokters = DokterModel::all();
+        return view('/EditPasien', compact('ruangans','dokters'), ['pasiens' => $pasien]);
     }
 
     public function update(PasienRequest $request, string $id)
@@ -62,13 +63,13 @@ class PasienController extends Controller
         $pasien->penyakit = $request->penyakit;
         $pasien->ruangan_id = $request->ruangan_id;
         $pasien->save();
-        return redirect('/pasien')->with('success', 'Data Pasien Berhasil Diubah!');
+        return redirect('admin/pasien')->with('success', 'Data Pasien Berhasil Diubah!');
     }
     public function destroy($id)
     {
         $pasien = PasienModel::find($id);
         $pasien->delete();
-        return redirect('/pasien')->with('success', 'Data Pasien Berhasil Dihapus!');
+        return redirect('admin/pasien')->with('success', 'Data Pasien Berhasil Dihapus!');
     }
 
     public function detail($id)

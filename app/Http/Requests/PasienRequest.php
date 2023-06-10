@@ -40,6 +40,11 @@ class PasienRequest extends FormRequest
                 'string',
                 'max:200'
             ],
+            'penyakit' => [
+                'required',
+                'string',
+                'max:200'
+            ],
             'dokter_id' => [
                 'required',
                 'integer',

@@ -16,7 +16,7 @@
 
 <body>
     <div class="kembali">
-        <a href="{{ url('/pasien')}}">
+        <a href="{{ url('admin/dokter')}}">
             <button class="tombol">
                 <i class="fa fa-chevron-left fa-lg"></i>
                 <span class="tTombol">Kembali</span>
@@ -46,6 +46,11 @@
                         <td>Nomor Telepon</td>
                         <td>:</td>
                         <th>{{ $dokters->nomor_telepon }}</th>
+                    </tr>
+                    <tr>
+                        <td>Jumlah Pasien</td>
+                        <td>:</td>
+                        <th>{{ $dokters->psn->count(); }}</th>
                     </tr>
                 </table>
             </div>

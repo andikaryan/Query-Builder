@@ -17,7 +17,7 @@
 <body>
 
     <div class="kembali">
-        <a href="{{url ('/pasien')}}">
+        <a href="{{url ('admin/pasien')}}">
             <button class="tombol">
                 <i class="fa fa-chevron-left fa-lg"></i>
                 <span class="tTombol">Kembali</span>
@@ -30,7 +30,7 @@
             <p>Tambah Pasien</p>
         </div>
 
-        <form action="{{ url('/tambah-pasien') }}" method="POST" enctype="multipart/form-data">
+        <form action="{{ url('admin/tambah-pasien') }}" method="POST" enctype="multipart/form-data">
             @csrf
             <div class="form">
                 <label for="">Nama Pasien</label><br>
@@ -46,8 +46,11 @@
                 <input type="text" name="asal" class="form-control" placeholder="Asal...">
 
                 <label for="">Penyakit</label><br>
+                <input type="text" name="penyakit" class="form-control" placeholder="Penyakit...">
+
+                <label for="">Kategori Penyakit</label><br>
                 <select name="dokter_id" class="form-control">
-                    <option value="">-Pilih Penyakit-</option>
+                    <option value="">-Pilih Kategori-</option>
                     @foreach ($dokters as $item)
                         <option value="{{$item->id}}">{{$item->spesialis}}</option>
                     @endforeach

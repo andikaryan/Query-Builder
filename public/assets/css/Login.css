@@ -1,0 +1,94 @@
+
+.judullog{
+    font-family: "Montserrat", sans-serif;
+    font-weight: bold;
+    font-size: 16px;
+    text-align: center;
+    margin: 60px 0px;
+}
+
+.box{
+    background-color: #0077B6;
+    width: 400px;
+    margin: 0px auto;
+    font-family: "Montserrat", sans-serif;
+    font-size: 14px;
+    color: black;
+    border-radius: 10px;
+}
+
+.sub{
+    display: flex;
+    justify-content: center;
+    text-align: center;
+    padding-top: 20px;
+    margin: 0 60px;
+    color: #F6F6F6;
+    font-size: 16px;
+    font-weight: 600;
+}
+.daftar{
+    font-size: 14px;
+    color: #FFCB74;
+}
+
+.daftar:hover{
+    font-weight: bold;
+}
+
+
+.form{
+    margin: 15px 60px;
+}
+.form label{
+    color: #F6F6F6;
+    font-size: 12px;
+}
+
+input[type=text], select {
+    width: 100%;
+    padding: 12px 20px;
+    margin: 8px 0;
+    display: inline-block;
+    border: 1px solid #F6F6F6;
+    border-radius: 4px;
+    box-sizing: border-box;
+    font-family: "Montserrat", sans-serif;
+}
+
+input[type=password], select {
+    width: 100%;
+    padding: 12px 20px;
+    margin: 8px 0;
+    display: inline-block;
+    border: 1px solid #F6F6F6;
+    border-radius: 4px;
+    box-sizing: border-box;
+}
+
+.submit{
+    display: flex;
+    justify-content: center;
+}
+input[type=submit] {
+    background-color: #c2c2c2;
+    color: rgb(0, 0, 0);
+    padding: 10px 20px;
+    margin: 30px 0 50px 0;
+    border: none;
+    border-radius: 4px;
+    cursor: pointer;
+    font-weight: bold;
+  }
+
+input[type=submit]:hover{
+    background-color: #FFCB74;
+    color: rgb(0, 0, 0);
+}
+
+#alert{
+    margin: 0 auto;
+    width: 70%;
+    padding: 10px;
+    text-align: center;
+}

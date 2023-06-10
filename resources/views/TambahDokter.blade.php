@@ -5,7 +5,7 @@
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Tambah Data Pasien</title>
+    <title>Tambah Data Dokter</title>
     <link rel="stylesheet" href="{{ asset('assets/css/TambahPasienRuangan.css')}}">
     <link href="//netdna.bootstrapcdn.com/font-awesome/4.0.3/css/font-awesome.css" rel="stylesheet" />
 </head>
@@ -17,7 +17,7 @@
 <body>
 
     <div class="kembali">
-        <a href="{{url ('/dokter')}}">
+        <a href="{{url ('admin/dokter')}}">
             <button class="tombol">
                 <i class="fa fa-chevron-left fa-lg"></i>
                 <span class="tTombol">Kembali</span>
@@ -30,7 +30,7 @@
             <p>Tambah Dokter</p>
         </div>
 
-        <form action="{{ url('/tambah-dokter') }}" method="POST" enctype="multipart/form-data">
+        <form action="{{ url('admin/tambah-dokter') }}" method="POST" enctype="multipart/form-data">
             @csrf
             <div class="form">
                 <label for="">Nama Dokter</label><br>

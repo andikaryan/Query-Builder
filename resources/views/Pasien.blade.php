@@ -11,13 +11,16 @@
         </a>
         <ul class="nav nav-pills flex-column mt-2">
           <li class="nav-item">
-            <a href="{{ url('/pasien')}}" style="background-color: #0077B6;" class="nav-link active" aria-current="page">Pasien</a>
+            <a href="{{ url('admin/pasien')}}" style="background-color: #0077B6;" class="nav-link active" aria-current="page">Pasien</a>
           </li>
           <li class="nav-item">
-            <a href="{{ url('/ruangan')}}" class="nav-link text-black">Ruangan</a>
+            <a href="{{ url('admin/ruangan')}}" class="nav-link text-black">Ruangan</a>
           </li>
           <li class="nav-item">
-            <a href="{{ url('/dokter')}}" class="nav-link text-black">Dokter</a>
+            <a href="{{ url('admin/dokter')}}" class="nav-link text-black">Dokter</a>
+          </li>
+          <li class="nav-item">
+            <a href="{{ url('/logout')}}" class="nav-link text-black">Keluar</a>
           </li>
         </ul>
       </div>
@@ -32,7 +35,7 @@
         <div>
           Pasien
         </div>
-        <a href="{{ url('/tambah-pasien')}}" style="text-decoration: none;">
+        <a href="{{ url('admin/tambah-pasien')}}" style="text-decoration: none;">
           <div class="tambah">
             Tambah
           </div>
@@ -66,12 +69,12 @@
               <td>{{ $item->tanggal_lahir}}</td>
               <td>{{ $item->tanggal_opname}}</td>
               <td>{{ $item->asal}}</td>
-              <td>{{ $item->dtr->spesialis}}</td>
+              <td>{{ $item->penyakit}} ({{ $item->dtr->spesialis}})</td>
               <td>{{ $item->rgn->nama_ruangan}}</td>
               <td>
-                <a class="tEdit" href="{{ url('/edit-pasien/'.$item->id)}}">Edit</a>
-                <a class="tHapus" href="{{ url('/hapus-pasien/'.$item->id)}}" onclick="return confirm('anda yakin ingin menghapus?')">Hapus</a>
-                <a class="tDetail" href="{{ url('/detail-pasien/'.$item->id)}}">Detail</a>
+                <a class="tEdit" href="{{ url('admin/edit-pasien/'.$item->id)}}">Edit</a>
+                <a class="tHapus" href="{{ url('admin/hapus-pasien/'.$item->id)}}" onclick="return confirm('anda yakin ingin menghapus?')">Hapus</a>
+                <a class="tDetail" href="{{ url('admin/detail-pasien/'.$item->id)}}">Detail</a>
               </td>
 
             </tr>

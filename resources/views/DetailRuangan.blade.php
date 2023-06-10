@@ -14,7 +14,7 @@
 @section('main-content')
   <body>
     <div class="kembali">
-        <a href="{{ url('/ruangan')}}">
+        <a href="{{ url('admin/ruangan')}}">
             <button class="tombol">
                 <i class="fa fa-chevron-left fa-lg"></i>
                 <span class="tTombol">Kembali</span>

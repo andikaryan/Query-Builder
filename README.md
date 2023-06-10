@@ -1,66 +1,167 @@
-<p align="center"><a href="https://laravel.com" target="_blank"><img src="https://raw.githubusercontent.com/laravel/art/master/logo-lockup/5%20SVG/2%20CMYK/1%20Full%20Color/laravel-logolockup-cmyk-red.svg" width="400" alt="Laravel Logo"></a></p>
+## CSV Seeder
 
-<p align="center">
-<a href="https://github.com/laravel/framework/actions"><img src="https://github.com/laravel/framework/workflows/tests/badge.svg" alt="Build Status"></a>
-<a href="https://packagist.org/packages/laravel/framework"><img src="https://img.shields.io/packagist/dt/laravel/framework" alt="Total Downloads"></a>
-<a href="https://packagist.org/packages/laravel/framework"><img src="https://img.shields.io/packagist/v/laravel/framework" alt="Latest Stable Version"></a>
-<a href="https://packagist.org/packages/laravel/framework"><img src="https://img.shields.io/packagist/l/laravel/framework" alt="License"></a>
-</p>
+[![Latest Version on Packagist](https://img.shields.io/packagist/v/flynsarmy/csv-seeder.svg?style=flat-square)](https://packagist.org/packages/flynsarmy/csv-seeder)
+[![Software License](https://img.shields.io/badge/license-MIT-brightgreen.svg?style=flat-square)](LICENSE.md)
+![Build Status](https://github.com/Flynsarmy/laravel-csv-seeder/workflows/CI/badge.svg)
+[![Quality Score](https://scrutinizer-ci.com/g/Flynsarmy/laravel-csv-seeder/badges/quality-score.png)](https://scrutinizer-ci.com/g/flynsarmy/laravel-csv-seeder)
+[![Total Downloads](https://img.shields.io/packagist/dt/flynsarmy/csv-seeder?style=flat-square)](https://packagist.org/packages/flynsarmy/csv-seeder)
+                    
 
-## About Laravel
+### Seed your database with CSV files
 
-Laravel is a web application framework with expressive, elegant syntax. We believe development must be an enjoyable and creative experience to be truly fulfilling. Laravel takes the pain out of development by easing common tasks used in many web projects, such as:
+This package allows CSV based seeds.
 
-- [Simple, fast routing engine](https://laravel.com/docs/routing).
-- [Powerful dependency injection container](https://laravel.com/docs/container).
-- Multiple back-ends for [session](https://laravel.com/docs/session) and [cache](https://laravel.com/docs/cache) storage.
-- Expressive, intuitive [database ORM](https://laravel.com/docs/eloquent).
-- Database agnostic [schema migrations](https://laravel.com/docs/migrations).
-- [Robust background job processing](https://laravel.com/docs/queues).
-- [Real-time event broadcasting](https://laravel.com/docs/broadcasting).
 
-Laravel is accessible, powerful, and provides tools required for large, robust applications.
+### Installation
 
-## Learning Laravel
+Require this package in your composer.json and run composer update (or run `composer require flynsarmy/csv-seeder:2.*` directly):
 
-Laravel has the most extensive and thorough [documentation](https://laravel.com/docs) and video tutorial library of all modern web application frameworks, making it a breeze to get started with the framework.
+**For PHP 7.4+**
 
-You may also try the [Laravel Bootcamp](https://bootcamp.laravel.com), where you will be guided through building a modern Laravel application from scratch.
+```json
+"flynsarmy/csv-seeder": "2.0.*"
+```
 
-If you don't feel like reading, [Laracasts](https://laracasts.com) can help. Laracasts contains over 2000 video tutorials on a range of topics including Laravel, modern PHP, unit testing, and JavaScript. Boost your skills by digging into our comprehensive video library.
+**For older PHP versions**
 
-## Laravel Sponsors
+```json
+"flynsarmy/csv-seeder": "1.*"
+```
 
-We would like to extend our thanks to the following sponsors for funding Laravel development. If you are interested in becoming a sponsor, please visit the Laravel [Patreon page](https://patreon.com/taylorotwell).
+### Usage
 
-### Premium Partners
+Your CSV's header row should match the DB columns you wish to import. IE to import *id* and *name* columns, your CSV should look like:
 
-- **[Vehikl](https://vehikl.com/)**
-- **[Tighten Co.](https://tighten.co)**
-- **[Kirschbaum Development Group](https://kirschbaumdevelopment.com)**
-- **[64 Robots](https://64robots.com)**
-- **[Cubet Techno Labs](https://cubettech.com)**
-- **[Cyber-Duck](https://cyber-duck.co.uk)**
-- **[Many](https://www.many.co.uk)**
-- **[Webdock, Fast VPS Hosting](https://www.webdock.io/en)**
-- **[DevSquad](https://devsquad.com)**
-- **[Curotec](https://www.curotec.com/services/technologies/laravel/)**
-- **[OP.GG](https://op.gg)**
-- **[WebReinvent](https://webreinvent.com/?utm_source=laravel&utm_medium=github&utm_campaign=patreon-sponsors)**
-- **[Lendio](https://lendio.com)**
+```csv
+id,name
+1,Foo
+2,Bar
+```
 
-## Contributing
+Seed classes must extend `Flynsarmy\CsvSeeder\CsvSeeder`, they must define the destination database table and CSV file path, and finally they must call `parent::run()` like so:
 
-Thank you for considering contributing to the Laravel framework! The contribution guide can be found in the [Laravel documentation](https://laravel.com/docs/contributions).
+```php
+use Flynsarmy\CsvSeeder\CsvSeeder;
 
-## Code of Conduct
+class StopsTableSeeder extends CsvSeeder {
 
-In order to ensure that the Laravel community is welcoming to all, please review and abide by the [Code of Conduct](https://laravel.com/docs/contributions#code-of-conduct).
+	public function __construct()
+	{
+		$this->table = 'your_table';
+		$this->filename = base_path().'/database/seeds/csvs/your_csv.csv';
+	}
 
-## Security Vulnerabilities
+	public function run()
+	{
+		// Recommended when importing larger CSVs
+		DB::disableQueryLog();
 
-If you discover a security vulnerability within Laravel, please send an e-mail to Taylor Otwell via [taylor@laravel.com](mailto:taylor@laravel.com). All security vulnerabilities will be promptly addressed.
+		// Uncomment the below to wipe the table clean before populating
+		DB::table($this->table)->truncate();
 
-## License
+		parent::run();
+	}
+}
+```
 
-The Laravel framework is open-sourced software licensed under the [MIT license](https://opensource.org/licenses/MIT).
+Drop your CSV into */database/seeds/csvs/your_csv.csv* or whatever path you specify in your constructor above.
+
+### Configuration
+
+In addition to setting the database table and CSV filename, the following configuration options are available. They can be set in your class constructor:
+
+ - `connection` (string '') Connection to use for inserts. Leave empty for default connection.
+ - `insert_chunk_size` (int 500) An SQL insert statement will trigger every `insert_chunk_size` number of rows while reading the CSV
+ - `csv_delimiter` (string ,) The CSV field delimiter.
+ - `hashable` (array [password]) List of fields to be hashed before import, useful if you are importing users and need their passwords hashed. Uses `Hash::make()`. Note: This is EXTREMELY SLOW. If you have a lot of rows in your CSV your import will take quite a long time.
+ - `offset_rows` (int 0) How many rows at the start of the CSV to ignore. Warning: If used, you probably want to set a mapping as your header row in the CSV will be skipped.
+ - `mapping` (array []) Associative array of csvCol => dbCol. See examples section for details. If not specified, the first row (after offset) of the CSV will be used as the mapping.
+ - `should_trim` (bool false) Whether to trim the data in each cell of the CSV during import.
+ - `timestamps` (bool false) Whether or not to add *created_at* and *updated_at* columns on import.
+   - `created_at` (string current time in ISO 8601 format) Only used if `timestamps` is `true`
+   - `updated_at` (string current time in ISO 8601 format) Only used if `timestamps` is `true`
+
+
+### Examples 
+CSV with pipe delimited values:
+
+```php
+public function __construct()
+{
+	$this->table = 'users';
+	$this->csv_delimiter = '|';
+	$this->filename = base_path().'/database/seeds/csvs/your_csv.csv';
+}
+```
+
+Specifying which CSV columns to import:
+
+```php
+public function __construct()
+{
+	$this->table = 'users';
+	$this->csv_delimiter = '|';
+	$this->filename = base_path().'/database/seeds/csvs/your_csv.csv';
+	$this->mapping = [
+	    0 => 'first_name',
+	    1 => 'last_name',
+	    5 => 'age',
+	];
+}
+```
+
+Trimming the whitespace from the imported data:
+
+```php
+public function __construct()
+{
+	$this->table = 'users';
+	$this->csv_delimiter = '|';
+	$this->filename = base_path().'/database/seeds/csvs/your_csv.csv';
+	$this->mapping = [
+	    0 => 'first_name',
+	    1 => 'last_name',
+	    5 => 'age',
+	];
+	$this->should_trim = true;
+}
+```
+
+Skipping the CSV header row (Note: A mapping is required if this is done):
+
+```php
+public function __construct()
+{
+	$this->table = 'users';
+	$this->csv_delimiter = '|';
+	$this->filename = base_path().'/database/seeds/csvs/your_csv.csv';
+	$this->offset_rows = 1;
+	$this->mapping = [
+	    0 => 'first_name',
+	    1 => 'last_name',
+	    2 => 'password',
+	];
+	$this->should_trim = true;
+}
+```
+
+Specifying the DB connection to use:
+
+```php
+public function __construct()
+{
+	$this->table = 'users';
+	$this->connection = 'my_connection';
+	$this->filename = base_path().'/database/seeds/csvs/your_csv.csv';
+}
+```
+
+### Migration Guide
+
+#### 2.0
+
+- `$seeder->hashable` is now an `array` of columns rather than a single column name. Wrap your old string value in `[]`.
+
+### License
+
+CsvSeeder is open-sourced software licensed under the [MIT license](http://opensource.org/licenses/MIT)

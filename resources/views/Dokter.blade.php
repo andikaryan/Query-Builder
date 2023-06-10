@@ -11,20 +11,23 @@
         </a>
         <ul class="nav nav-pills flex-column mt-2">
           <li class="nav-item">
-            <a href="{{ url('/pasien')}}" class="nav-link text-black">Pasien</a>
+            <a href="{{ url('admin/pasien')}}" class="nav-link text-black">Pasien</a>
           </li>
           <li class="nav-item">
-            <a href="{{ url('/ruangan')}}" class="nav-link text-black">Ruangan</a>
+            <a href="{{ url('admin/ruangan')}}" class="nav-link text-black">Ruangan</a>
           </li>
           <li class="nav-item">
-            <a href="{{ url('/dokter')}}" style="background-color: #0077B6;" class="nav-link active" aria-current="page">Dokter</a>
+            <a href="{{ url('admin/dokter')}}" style="background-color: #0077B6;" class="nav-link active" aria-current="page">Dokter</a>
+          </li>
+          <li class="nav-item">
+            <a href="{{ url('/logout')}}" class="nav-link text-black">Keluar</a>
           </li>
         </ul>
       </div>
     </div>
     <div class="badan">
         @if(Session::has('error'))
-        <div class="alert alert-success alert-block" role="alert" id="alert">
+        <div class="alert alert-danger alert-block" role="alert" id="alert">
             {{ Session::get('error') }}
         </div>
         @endif
@@ -38,7 +41,7 @@
         <div>
           Dokter
         </div>
-        <a href="{{ url('/tambah-dokter')}}" style="text-decoration: none;">
+        <a href="{{ url('admin/tambah-dokter')}}" style="text-decoration: none;">
           <div class="tambah">
             Tambah
           </div>
@@ -52,6 +55,7 @@
               <th>Nama Dokter</th>
               <th>Spesialis</th>
               <th>Nomor Telepon</th>
+              <th>Jumlah Pasien</th>
               <th>Aksi</th>
             </tr>
           </thead>
@@ -68,10 +72,11 @@
               <td>{{ $item->nama_dokter}}</td>
               <td>{{ $item->spesialis}}</td>
               <td>{{ $item->nomor_telepon}}</td>
+              <td>{{ $item->psn->count(); }}</td>
               <td>
-                <a class="tEdit" href="{{ url('/edit-dokter/'.$item->id)}}">Edit</a>
-                <a class="tHapus" href="{{ url('/hapus-dokter/'.$item->id)}}" onclick="return confirm('anda yakin ingin menghapus?')">Hapus</a>
-                <a class="tDetail" href="{{ url('/detail-dokter/'.$item->id)}}">Detail</a>
+                <a class="tEdit" href="{{ url('admin/edit-dokter/'.$item->id)}}">Edit</a>
+                <a class="tHapus" href="{{ url('admin/hapus-dokter/'.$item->id)}}" onclick="return confirm('anda yakin ingin menghapus?')">Hapus</a>
+                <a class="tDetail" href="{{ url('admin/detail-dokter/'.$item->id)}}">Detail</a>
               </td>
 
             </tr>
