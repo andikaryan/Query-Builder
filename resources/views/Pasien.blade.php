@@ -76,7 +76,6 @@
                 <a class="tHapus" href="{{ url('admin/hapus-pasien/'.$item->id)}}" onclick="return confirm('anda yakin ingin menghapus?')">Hapus</a>
                 <a class="tDetail" href="{{ url('admin/detail-pasien/'.$item->id)}}">Detail</a>
               </td>
-
             </tr>
             @endforeach
           </tbody>
@@ -85,16 +84,12 @@
     </div>
   </div>
 </div>
-
 </body>
-
 </html>
-
 <script type="text/javascript" src="http://code.jquery.com/jquery-latest.js"></script>
 <script type="text/javascript">
   $(function() {
     $('#alert').delay(2000).fadeOut();
   });
 </script>
-
 @endsection

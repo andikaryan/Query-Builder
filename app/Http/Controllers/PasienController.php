@@ -61,6 +61,7 @@ class PasienController extends Controller
         $pasien->tanggal_opname = $request->tanggal_opname;
         $pasien->asal = $request->asal;
         $pasien->penyakit = $request->penyakit;
+        $pasien->dokter_id = $request->dokter_id;
         $pasien->ruangan_id = $request->ruangan_id;
         $pasien->save();
         return redirect('admin/pasien')->with('success', 'Data Pasien Berhasil Diubah!');

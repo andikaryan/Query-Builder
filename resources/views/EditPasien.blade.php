@@ -52,6 +52,7 @@
 
                 <label for="">Kategori Penyakit</label><br>
                 <select name="dokter_id" class="form-control">
+                <option value="{{ $pasiens->dtr->spesialis }}">{{ $pasiens->dtr->spesialis }}</option>
                     @foreach ($dokters as $item)
                         <option value="{{$item->id}}">{{$item->spesialis}}</option>
                     @endforeach
